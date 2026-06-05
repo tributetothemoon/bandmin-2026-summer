@@ -84,14 +84,15 @@ nav {
 
     /* 그라데이션 오버레이: 상단 0~65% navy → 글자 있는 영역 덮어 가독성 확보 */
     .hero-overlay {
-      position: absolute; top/bottom:0; left:50%; transform:translateX(-50%); width:78%; z-index: 1;
+      position: absolute; top: 0; bottom: 0; left: 50%;
+      transform: translateX(-50%); width: 78%; z-index: 1;
       pointer-events: none;
       background: linear-gradient(to bottom,
-        rgba(8,28,90,.55) 0%,    /* 맨 위(nav 영역) 살짝 어둡게 */
-        rgba(8,28,90,.80) 30%,   /* 태그·제목 영역 가장 진하게 */
-        rgba(8,28,90,.65) 50%,   /* 날짜·장소 영역 */
+        rgba(8,28,90,.55) 0%,
+        rgba(8,28,90,.80) 30%,
+        rgba(8,28,90,.65) 50%,
         rgba(8,28,90,.15) 60%,
-        rgba(8,28,90,0)   65%);  /* 65% 아래는 이미지 그대로 (하단 UI는 자체 배경 있음) */
+        rgba(8,28,90,0)   65%);
     }
 
     /* 정보 블록 (배경 위 중앙정렬) */
