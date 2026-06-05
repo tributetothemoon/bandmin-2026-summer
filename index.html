@@ -30,44 +30,40 @@
 
   <!-- Hero -->
   <section id="hero">
-    <div class="hero-layout">
 
-      <!-- 포스터 이미지 -->
-      <div class="hero-poster-panel">
-        <div class="hero-poster-wrap">
-          <img src="poster.png" alt="열대야 공연 포스터" class="hero-poster-img" />
-        </div>
+    <!-- 배경 이미지 (추후 icecream.png 로 교체 / 지금은 poster.png 유지) -->
+    <img src="poster.png" alt="열대야 공연 포스터" class="hero-bg-img" />
+    <div class="hero-overlay"></div>
+
+    <!-- 공연 정보 (배경 위 중앙정렬) -->
+    <div class="hero-content">
+      <div class="hero-tag">🧊 Live Concert · Free Entry</div>
+      <h1 class="hero-title">열대야<span class="pink">.</span></h1>
+      <p class="hero-date">26.06.27 (SAT) 5PM</p>
+      <p class="hero-venue">펄스라이브홀</p>
+
+      <div class="hero-bands">
+        <span class="hero-band-chip">holywater</span>
+        <span class="hero-band-chip">ㅊㅁㄷㅁ</span>
+        <span class="hero-band-chip">Downdog</span>
+        <span class="hero-band-chip">경쟁대응</span>
+        <span class="hero-band-chip">예랑도랑</span>
       </div>
 
-      <!-- 공연 정보 -->
-      <div class="hero-info">
-        <div class="hero-tag">🧊 Live Concert · Free Entry</div>
-        <h1 class="hero-title">열대야<span class="pink">.</span></h1>
-        <p class="hero-date">26.06.27 (SAT) 5PM</p>
-        <p class="hero-venue">펄스라이브홀</p>
+      <!-- Countdown -->
+      <div class="countdown" id="countdown">
+        <div class="cd-unit"><span class="cd-num" id="cd-d">--</span><span class="cd-label">Days</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-h">--</span><span class="cd-label">Hours</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-m">--</span><span class="cd-label">Min</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-s">--</span><span class="cd-label">Sec</span></div>
+      </div>
 
-        <div class="hero-bands">
-          <span class="hero-band-chip">holywater</span>
-          <span class="hero-band-chip">ㅊㅁㄷㅁ</span>
-          <span class="hero-band-chip">Downdog</span>
-          <span class="hero-band-chip">경쟁대응</span>
-          <span class="hero-band-chip">예랑도랑</span>
-        </div>
-
-        <!-- Countdown -->
-        <div class="countdown" id="countdown">
-          <div class="cd-unit"><span class="cd-num" id="cd-d">--</span><span class="cd-label">Days</span></div>
-          <div class="cd-unit"><span class="cd-num" id="cd-h">--</span><span class="cd-label">Hours</span></div>
-          <div class="cd-unit"><span class="cd-num" id="cd-m">--</span><span class="cd-label">Min</span></div>
-          <div class="cd-unit"><span class="cd-num" id="cd-s">--</span><span class="cd-label">Sec</span></div>
-        </div>
-
-        <div class="hero-btns">
-          <a href="#bands" class="btn btn-primary">🎸참여 밴드</a>
-          <a href="#playlist" class="btn btn-secondary">🎧플레이리스트</a>
-        </div>
+      <div class="hero-btns">
+        <a href="#bands" class="btn btn-primary">🎸참여 밴드</a>
+        <a href="#playlist" class="btn btn-secondary">🎧플레이리스트</a>
       </div>
     </div>
+
     <div class="scroll-hint">Scroll</div>
   </section>
 
@@ -274,6 +270,14 @@
   <section id="ticket">
     <div class="section-inner ticket-inner" style="text-align:center; padding: 8rem 2rem;">
       <p class="section-label" style="color:rgba(255,244,221,.5); display:flex; justify-content:center; margin-bottom:1.2rem;">Entry</p>
+
+      <!-- 추후 postertext.png 로 교체 예정 / 아직 이미지 없어서 placeholder 유지 -->
+      <!-- <img src="postertext.png" alt="열대야" class="ticket-postertext-img" /> -->
+      <div class="ticket-postertext-placeholder">
+        <span class="ph-label">postertext.png</span>
+        <span class="ph-text">열대야</span>
+      </div>
+
       <h2 class="ticket-title">무료 입장</h2>
       <p class="ticket-sub" style="font-size:1.1rem; margin-bottom:.5rem;">무료 입장 자율 퇴장</p>
       <p class="ticket-sub">26.06.27 (SAT) &nbsp;·&nbsp; 펄스라이브홀 &nbsp;·&nbsp; 17:00 OPEN</p>
@@ -341,7 +345,7 @@
       <p class="section-label reveal">Music</p>
       <h2 class="section-title reveal">플레이리스트</h2>
       <div class="divider reveal"></div>
-      <div class="reveal" style="max-width:720px;">
+      <div class="reveal" style="max-width:720px; margin:0 auto;">
         <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:10px; overflow:hidden; border:1px solid rgba(255,244,221,.1);">
           <iframe
             src="https://www.youtube.com/embed/videoseries?list=PLz7A8w3UfmiwxfO8-nf10tNUv42ojxV--"
@@ -351,7 +355,7 @@
             allowfullscreen>
           </iframe>
         </div>
-        <div style="margin-top:1rem; text-align:right;">
+        <div style="margin-top:1rem; text-align:center;">
           <a href="https://youtube.com/playlist?list=PLz7A8w3UfmiwxfO8-nf10tNUv42ojxV--"
              target="_blank" rel="noopener"
              style="font-size:.7rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
