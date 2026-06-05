@@ -384,9 +384,9 @@
       const yt = card.dataset.youtube;
       const container = card.querySelector('.band-links');
       if (ig) container.insertAdjacentHTML('beforeend',
-        `<a href="${ig}" target="_blank" rel="noopener" class="band-link">Instagram</a>`);
+        `<a href="${ig}" target="_blank" rel="noopener" class="band-link" aria-label="Instagram"><img src="instagram.png" alt="Instagram"></a>`);
       if (yt) container.insertAdjacentHTML('beforeend',
-        `<a href="${yt}" target="_blank" rel="noopener" class="band-link">YouTube</a>`);
+        `<a href="${yt}" target="_blank" rel="noopener" class="band-link" aria-label="YouTube"><img src="youtube.png" alt="YouTube"></a>`);
       if (!ig && !yt) container.remove();
     });
 
