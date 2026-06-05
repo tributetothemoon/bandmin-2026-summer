@@ -89,12 +89,11 @@ nav {
       transform: translateX(-50%); width: 78%; z-index: 1;
       pointer-events: none;
       background: linear-gradient(to bottom,
-        rgba(8,28,90,0)   65%,
-        rgba(8,28,90,.15) 60%,
-        rgba(8,28,90,.65) 50%,
-        rgba(8,28,90,.80) 30%,
-        rgba(8,28,90,.55) 0%)
-        ;
+        rgba(8,28,90,0)   0%,    /* 맨 위: 투명 */
+        rgba(8,28,90,.20) 40%,
+        rgba(8,28,90,.55) 60%,
+        rgba(8,28,90,.80) 80%,
+        rgba(8,28,90,.92) 100%); /* 맨 아래: 가장 진하게 */
     }
 
     /* 정보 블록 (배경 위 중앙정렬) */
