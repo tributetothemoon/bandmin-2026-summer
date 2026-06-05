@@ -265,7 +265,7 @@ nav {
     .band-info { padding: 1rem 1.1rem 1.1rem; }
     .band-name {
       font-weight: 800; font-size: 1.05rem;
-      letter-spacing: -.02em; color: var(--cream); margin-bottom: .3rem;
+      letter-spacing: -.02em; color: var(--cream); margin-bottom: .8rem;
     }
     .band-desc {
       font-size: .78rem; line-height: 1.65;
