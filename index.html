@@ -392,6 +392,25 @@
       color: rgba(255,244,221,.65); margin-bottom: .5rem; letter-spacing: .02em;
     }
 
+    .donation-btn {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--pink);
+      border: 1px solid rgba(245,108,168,.4);
+      padding: .55rem 1.4rem;
+      border-radius: 3px;
+      background: transparent;
+      cursor: pointer;
+      transition: background .15s, color .15s;
+    }
+    
+    .donation-btn:hover {
+      background: #F56CA8;
+      color: #081C5A;
+    }
+
     /* ── Support ── */
     #support { background: linear-gradient(to bottom, var(--navy), #070f3a); }
 
@@ -730,14 +749,34 @@
           <img src="qr.png" alt="후원 QR 코드"
                style="width:176px; height:176px; display:block; image-rendering:pixelated;" />
         </div>
-        <a href="DONATION_URL_HERE" target="_blank" rel="noopener" id="donation-link"
-           style="font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
-                  color:var(--pink); border:1px solid rgba(245,108,168,.4); padding:.55rem 1.4rem;
-                  border-radius:3px; transition:background .15s, color .15s; display:inline-block;"
-           onmouseover="this.style.background='#F56CA8';this.style.color='#081C5A'"
-           onmouseout="this.style.background='transparent';this.style.color='#F56CA8'">
-          💸 링크로 후원하기
-        </a>
+        <button id="copy-account-btn" class="donation-btn">
+          계좌번호 복사하기
+        </button>
+        
+        <p id="copy-message"
+           style="font-size:.65rem; color:var(--pink); opacity:0; transition:opacity .2s;">
+          복사되었습니다
+        </p>
+        
+        <script>
+        document.getElementById('copy-account-btn').addEventListener('click', async () => {
+          const text = '토스뱅크 1002-2528-3603 예랑나랑';
+        
+          try {
+            await navigator.clipboard.writeText(text);
+        
+            const message = document.getElementById('copy-message');
+            message.style.opacity = '1';
+        
+            setTimeout(() => {
+              message.style.opacity = '0';
+            }, 2000);
+        
+          } catch (err) {
+            alert(text);
+          }
+        });
+        </script>
         <p style="font-size:.6rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
                   color:rgba(255,244,221,.22);">QR 코드를 카메라로 스캔하세요</p>
       </div>
