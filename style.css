@@ -1,4 +1,3 @@
-
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -59,49 +58,48 @@ nav {
 
     /* ── Hero ── */
     #hero {
-      min-height: 100svh;
-      display: grid;
-      grid-template-rows: 1fr auto;
-      position: relative; overflow: hidden;
-    }
-
-    /* poster fills left/center, info on right */
-    .hero-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 100svh;
-      position: relative; z-index: 2;
-    }
-
-    /* Poster panel */
-    .hero-poster-panel {
       position: relative;
-      display: flex; align-items: stretch;
-      padding-top: 64px; /* nav height */
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      /* 여백조정: 상단 nav 아래 여유 + 양옆/하단 여백으로 이미지 잘림 자연스럽게 */
+      padding: 7rem 1.5rem 4.5rem;
     }
-    .hero-poster-wrap {
-      position: relative; width: 100%;
-      display: flex; align-items: flex-end;
-    }
-    .hero-poster-img {
+
+    /* 전체 배경 이미지 */
+    .hero-bg-img {
+      position: absolute; inset: 0; z-index: 0;
       width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
+      object-fit: cover;
+      object-position: center center;
       display: block;
     }
-    /* subtle vignette on right edge */
-    .hero-poster-panel::after {
-      content: '';
-      position: absolute; inset: 0; right: -1px;
-      background: linear-gradient(to right, transparent 60%, rgba(8,28,90,.9) 100%);
+
+    /* 그라데이션 오버레이 (100% → 0%): 텍스트 가독성 + 상단 잘림 블렌딩 */
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
       pointer-events: none;
+      background:
+        /* 중앙 텍스트 영역 살짝 어둡게 */
+        radial-gradient(ellipse 85% 60% at 50% 52%,
+          rgba(8,28,90,.55) 0%, rgba(8,28,90,0) 70%),
+        /* 상단(nav 영역) 어둡게 → 잘림 자연스럽게, 하단 100% navy */
+        linear-gradient(to bottom,
+          rgba(8,28,90,.92) 0%,
+          rgba(8,28,90,0)   24%,
+          rgba(8,28,90,0)   55%,
+          rgba(8,28,90,.97) 100%);
     }
 
-    /* Info panel */
-    .hero-info {
-      display: flex; flex-direction: column;
-      justify-content: center;
-      padding: 8rem 3.5rem 4rem 2rem;
+    /* 정보 블록 (배경 위 중앙정렬) */
+    .hero-content {
       position: relative; z-index: 2;
+      display: flex; flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 760px; width: 100%;
     }
     .hero-tag {
       display: inline-flex; align-items: center; gap: .5rem;
@@ -136,6 +134,7 @@ nav {
     .hero-bands {
       margin-top: 1.6rem;
       display: flex; flex-wrap: wrap; gap: .4rem;
+      justify-content: center;
       animation: fadeUp .85s .28s ease both;
     }
     .hero-band-chip {
@@ -170,6 +169,7 @@ nav {
     /* buttons */
     .hero-btns {
       display: flex; gap: .8rem; flex-wrap: wrap;
+      justify-content: center;
       margin-top: 2rem;
       animation: fadeUp .85s .4s ease both;
     }
@@ -281,7 +281,13 @@ nav {
 
     /* ── Timetable ── */
     #timetable { background: linear-gradient(to bottom, #070f3a, var(--navy)); }
-    .tt-list { display: flex; flex-direction: column; gap: .6rem; max-width: 600px; }
+    /* 중앙 정렬 */
+    #timetable .section-inner { text-align: center; }
+    #timetable .divider { margin-left: auto; margin-right: auto; }
+    .tt-list {
+      display: flex; flex-direction: column; gap: .6rem;
+      max-width: 600px; margin-left: auto; margin-right: auto;
+    }
     .tt-row {
       display: grid; grid-template-columns: 80px 1fr;
       align-items: center; gap: 1rem;
@@ -364,14 +370,31 @@ nav {
       background: linear-gradient(135deg, #0D39D9 0%, #2a1a8a 40%, #6b1a5a 70%, #F56CA8 100%);
       text-align: center; position: relative; overflow: hidden;
     }
-    #ticket::before {
-      content: '열대야';
-      position: absolute; font-weight: 900; font-size: 18vw;
-      letter-spacing: -.05em; opacity: .05;
-      top: 50%; left: 50%; transform: translate(-50%,-50%);
-      white-space: nowrap; color: var(--cream);
-    }
     .ticket-inner { position: relative; z-index: 2; }
+
+    /* postertext.png 자리 placeholder (이미지 받으면 .ticket-postertext-img 로 교체) */
+    .ticket-postertext-placeholder {
+      margin: 0 auto 2rem;
+      max-width: 440px;
+      padding: 1.6rem 1.2rem;
+      border: 2px dashed rgba(255,244,221,.45);
+      border-radius: 12px;
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      background: rgba(8,28,90,.12);
+    }
+    .ph-label {
+      font-family: var(--font-mono);
+      font-size: .6rem; letter-spacing: .18em; text-transform: uppercase;
+      color: rgba(255,244,221,.55);
+    }
+    .ph-text {
+      font-weight: 900; font-size: clamp(2.6rem, 9vw, 4.6rem);
+      letter-spacing: -.04em; line-height: 1; color: var(--cream);
+    }
+    .ticket-postertext-img {
+      display: block; max-width: 440px; width: 100%;
+      height: auto; margin: 0 auto 2rem;
+    }
     .ticket-title {
       font-weight: 900; font-size: clamp(2.5rem, 7vw, 5rem);
       letter-spacing: -.04em; color: var(--cream); margin-bottom: .8rem;
@@ -405,6 +428,9 @@ nav {
 
     /* ── Playlist ── */
     #playlist { background: #070f3a; }
+    /* 중앙 정렬 */
+    #playlist .section-inner { text-align: center; }
+    #playlist .divider { margin-left: auto; margin-right: auto; }
 
     /* ── Footer ── */
     footer {
@@ -425,17 +451,8 @@ nav {
     /* ── Responsive ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .hero-layout { grid-template-columns: 1fr; }
-      .hero-poster-panel {
-        height: 55svh; min-height: 300px;
-        padding-top: 0;
-      }
-      .hero-poster-panel::after {
-        background: linear-gradient(to bottom, transparent 50%, rgba(8,28,90,.95) 100%);
-      }
-      .hero-info {
-        padding: 1.5rem 1.5rem 3rem;
-      }
+      #hero { padding: 6rem 1.2rem 3.5rem; }
+      .hero-content { max-width: 100%; }
       .venue-grid { grid-template-columns: 1fr; }
       .bands-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -459,17 +476,17 @@ nav {
   align-items: center;
   justify-content: center;
 
-  padding: 0.9rem 1.3rem;
+  padding: 1.8rem 2.6rem;
   border-radius: 999px;
 
   background: var(--pink);
   color: var(--navy);
 
-  font-size: .8rem;
+  font-size: 1.6rem;
   font-weight: 800;
   letter-spacing: .03em;
 
-  box-shadow: 0 10px 30px rgba(245,108,168,.35);
+  box-shadow: 0 14px 40px rgba(245,108,168,.42);
   transition: transform .15s ease,
               box-shadow .15s ease;
 
@@ -494,7 +511,7 @@ nav {
   .floating-support {
     right: 16px;
     bottom: 16px;
-    padding: .85rem 1.1rem;
-    font-size: .75rem;
+    padding: 1.7rem 2.2rem;
+    font-size: 1.5rem;
   }
 }
