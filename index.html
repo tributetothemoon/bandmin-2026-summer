@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>열대야 — 26.06.27 펄스라이브홀</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Pretendard via CDN (variable font) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #0D39D9;
+      --pink:    #F56CA8;
+      --cream:   #FFF4DD;
+      --navy:    #081C5A;
+      --navy2:   #0a2268;
+      --font-kr: 'Pretendard Variable', 'Pretendard', -apple-system, sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--navy);
+      color: var(--cream);
+      font-family: var(--font-kr);
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* noise */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      backdrop-filter: blur(14px);
+      background: rgba(8,28,90,.72);
+      border-bottom: 1px solid rgba(245,108,168,.15);
+    }
+    .nav-logo {
+      font-family: var(--font-kr);
+      font-weight: 800; font-size: 1.15rem;
+      letter-spacing: -.02em; color: var(--cream);
+    }
+    .nav-links { display: flex; gap: 1.6rem; }
+    .nav-links a {
+      font-size: .72rem; font-weight: 500;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: rgba(255,244,221,.55); transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--pink); }
+    .nav-cta {
+      font-size: .72rem; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: .45rem 1.1rem;
+      border: 1px solid var(--pink); border-radius: 3px;
+      color: var(--pink); transition: background .2s, color .2s;
+    }
+    .nav-cta:hover { background: var(--pink); color: var(--navy); }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      position: relative; overflow: hidden;
+    }
+
+    /* poster fills left/center, info on right */
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100svh;
+      position: relative; z-index: 2;
+    }
+
+    /* Poster panel */
+    .hero-poster-panel {
+      position: relative;
+      display: flex; align-items: stretch;
+      padding-top: 64px; /* nav height */
+    }
+    .hero-poster-wrap {
+      position: relative; width: 100%;
+      display: flex; align-items: flex-end;
+    }
+    .hero-poster-img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    /* subtle vignette on right edge */
+    .hero-poster-panel::after {
+      content: '';
+      position: absolute; inset: 0; right: -1px;
+      background: linear-gradient(to right, transparent 60%, rgba(8,28,90,.9) 100%);
+      pointer-events: none;
+    }
+
+    /* Info panel */
+    .hero-info {
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 8rem 3.5rem 4rem 2rem;
+      position: relative; z-index: 2;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .68rem; font-weight: 600;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--pink);
+      border: 1px solid rgba(245,108,168,.35);
+      padding: .3rem .9rem; border-radius: 20px;
+      margin-bottom: 1.8rem; width: fit-content;
+      animation: fadeUp .8s ease both;
+    }
+    .hero-title {
+      font-weight: 900;
+      font-size: clamp(3rem, 6vw, 5rem);
+      line-height: 1; letter-spacing: -.04em;
+      color: var(--cream);
+      animation: fadeUp .85s .1s ease both;
+    }
+    .hero-title .pink { color: var(--pink); }
+    .hero-date {
+      margin-top: 1.4rem;
+      font-weight: 700; font-size: clamp(1rem, 1.8vw, 1.3rem);
+      letter-spacing: -.01em; color: var(--cream);
+      animation: fadeUp .85s .18s ease both;
+    }
+    .hero-venue {
+      font-size: .9rem; font-weight: 500;
+      color: rgba(255,244,221,.55);
+      margin-top: .3rem;
+      animation: fadeUp .85s .22s ease both;
+    }
+    .hero-bands {
+      margin-top: 1.6rem;
+      display: flex; flex-wrap: wrap; gap: .4rem;
+      animation: fadeUp .85s .28s ease both;
+    }
+    .hero-band-chip {
+      font-size: .72rem; font-weight: 600;
+      padding: .25rem .7rem;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,244,221,.12);
+      border-radius: 20px; color: rgba(255,244,221,.7);
+    }
+
+    /* countdown */
+    .countdown {
+      display: flex; gap: 1rem; margin-top: 2.2rem;
+      animation: fadeUp .85s .34s ease both;
+    }
+    .cd-unit { text-align: center; }
+    .cd-num {
+      display: block; font-family: var(--font-mono); font-weight: 700;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--cream);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,244,221,.1);
+      border-radius: 6px;
+      padding: .35rem .7rem; min-width: 3rem;
+    }
+    .cd-label {
+      display: block; font-family: var(--font-mono);
+      font-size: .55rem; letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(255,244,221,.35); margin-top: .35rem;
+    }
+
+    /* buttons */
+    .hero-btns {
+      display: flex; gap: .8rem; flex-wrap: wrap;
+      margin-top: 2rem;
+      animation: fadeUp .85s .4s ease both;
+    }
+    .btn {
+      font-size: .78rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: .8rem 1.8rem; border-radius: 3px;
+      transition: transform .15s, box-shadow .15s;
+      cursor: pointer; border: none; display: inline-block;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.3); }
+    .btn-primary { background: var(--pink); color: var(--navy); }
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(255,244,221,.3);
+      color: var(--cream);
+    }
+    .btn-secondary:hover { border-color: var(--cream); }
+
+    /* scroll hint */
+    .scroll-hint {
+      position: absolute; bottom: 1.8rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .4rem;
+      font-size: .6rem; letter-spacing: .15em; text-transform: uppercase;
+      color: rgba(255,244,221,.25); z-index: 3;
+    }
+    .scroll-hint::after {
+      content: ''; display: block; width: 1px; height: 36px;
+      background: linear-gradient(to bottom, rgba(255,244,221,.25), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine { 0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(.5);opacity:.3} }
+
+    /* ── Section base ── */
+    section { position: relative; z-index: 1; }
+    .section-inner { max-width: 1100px; margin: 0 auto; padding: 6rem 2rem; }
+    .section-label {
+      font-size: .65rem; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--pink); margin-bottom: .8rem;
+    }
+    .section-title {
+      font-weight: 800;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1.15; letter-spacing: -.03em;
+      color: var(--cream); margin-bottom: 1.2rem;
+    }
+    .divider {
+      width: 40px; height: 2px;
+      background: linear-gradient(to right, var(--pink), var(--blue));
+      border-radius: 2px; margin-bottom: 2.8rem;
+    }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none} }
+
+    /* ── Intro ── */
+    #intro { background: linear-gradient(to bottom, var(--navy), #0d2480); }
+    .intro-body {
+      font-size: clamp(.95rem, 1.8vw, 1.1rem);
+      line-height: 2; color: rgba(255,244,221,.7);
+      max-width: 520px; font-weight: 400;
+    }
+    .intro-body strong { color: var(--cream); font-weight: 700; }
+
+    /* ── Bands ── */
+    #bands { background: #070f3a; }
+    .bands-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 1.2rem;
+    }
+    .band-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,244,221,.08);
+      border-radius: 10px; overflow: hidden;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+    }
+    .band-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(245,108,168,.3);
+      box-shadow: 0 12px 32px rgba(245,108,168,.1);
+    }
+    .band-img {
+      width: 100%; aspect-ratio: 1/1;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--pink) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.8rem;
+      color: rgba(255,255,255,.2); letter-spacing: -.03em;
+    }
+    .band-info { padding: 1rem 1.1rem 1.1rem; }
+    .band-name {
+      font-weight: 800; font-size: 1.05rem;
+      letter-spacing: -.02em; color: var(--cream); margin-bottom: .3rem;
+    }
+    .band-desc {
+      font-size: .78rem; line-height: 1.65;
+      color: rgba(255,244,221,.45); margin-bottom: .75rem;
+    }
+    .band-links { display: flex; gap: .4rem; }
+    .band-link {
+      font-size: .62rem; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: .28rem .65rem;
+      border: 1px solid rgba(255,244,221,.18);
+      border-radius: 3px; color: rgba(255,244,221,.45);
+      transition: border-color .15s, color .15s;
+    }
+    .band-link:hover { border-color: var(--pink); color: var(--pink); }
+
+    /* ── Timetable ── */
+    #timetable { background: linear-gradient(to bottom, #070f3a, var(--navy)); }
+    .tt-list { display: flex; flex-direction: column; gap: .6rem; max-width: 600px; }
+    .tt-row {
+      display: grid; grid-template-columns: 80px 1fr;
+      align-items: center; gap: 1rem;
+      padding: 1rem 1.2rem;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,244,221,.07);
+      border-radius: 8px;
+      transition: background .2s, border-color .2s;
+    }
+    .tt-row:hover { background: rgba(245,108,168,.07); border-color: rgba(245,108,168,.2); }
+    .tt-row.special { border-color: rgba(245,108,168,.25); background: rgba(245,108,168,.05); }
+    .tt-time {
+      font-family: var(--font-mono); font-size: .82rem;
+      color: var(--pink); letter-spacing: .04em;
+    }
+    .tt-act { font-weight: 700; font-size: 1.05rem; color: var(--cream); letter-spacing: -.01em; }
+    .tt-badge {
+      display: inline-block;
+      font-size: .55rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      background: var(--pink); color: var(--navy);
+      padding: .12rem .45rem; border-radius: 2px; margin-left: .5rem; vertical-align: middle;
+    }
+
+    /* ── Venue ── */
+    #venue { background: var(--navy); }
+    .venue-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .venue-info { display: flex; flex-direction: column; gap: 1.6rem; }
+    .venue-block-title {
+      font-size: .62rem; font-weight: 700;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: var(--pink); margin-bottom: .45rem;
+    }
+    .venue-block-body {
+      font-size: .92rem; line-height: 1.9;
+      color: rgba(255,244,221,.65); font-weight: 400;
+    }
+    .venue-block-body strong { color: var(--cream); font-weight: 700; }
+    .map-placeholder {
+      aspect-ratio: 4/3;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,244,221,.1);
+      border-radius: 10px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: .5rem;
+      color: rgba(255,244,221,.2);
+    }
+    .map-icon { font-size: 2.2rem; }
+    .map-label { font-size: .65rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; }
+
+    /* ── FAQ ── */
+    #faq { background: #070f3a; }
+    .faq-list { max-width: 660px; display: flex; flex-direction: column; gap: .5rem; }
+    .faq-item { border: 1px solid rgba(255,244,221,.08); border-radius: 8px; overflow: hidden; }
+    .faq-q {
+      width: 100%; padding: 1rem 1.2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(255,255,255,.04);
+      font-size: .9rem; font-weight: 500; color: var(--cream);
+      cursor: pointer; border: none; text-align: left;
+      font-family: var(--font-kr); transition: background .15s;
+    }
+    .faq-q:hover { background: rgba(255,255,255,.07); }
+    .faq-icon {
+      font-family: var(--font-mono); font-size: 1.1rem;
+      color: var(--pink); transition: transform .25s;
+      flex-shrink: 0; margin-left: 1rem;
+    }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height .3s ease, padding .3s;
+      font-size: .88rem; line-height: 1.8;
+      color: rgba(255,244,221,.55); padding: 0 1.2rem;
+    }
+    .faq-item.open .faq-a { max-height: 200px; padding: .9rem 1.2rem; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    /* ── Free Entry CTA ── */
+    #ticket {
+      background: linear-gradient(135deg, #0D39D9 0%, #2a1a8a 40%, #6b1a5a 70%, #F56CA8 100%);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    #ticket::before {
+      content: '열대야';
+      position: absolute; font-weight: 900; font-size: 18vw;
+      letter-spacing: -.05em; opacity: .05;
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      white-space: nowrap; color: var(--cream);
+    }
+    .ticket-inner { position: relative; z-index: 2; }
+    .ticket-title {
+      font-weight: 900; font-size: clamp(2.5rem, 7vw, 5rem);
+      letter-spacing: -.04em; color: var(--cream); margin-bottom: .8rem;
+    }
+    .ticket-sub {
+      font-size: 1rem; font-weight: 500;
+      color: rgba(255,244,221,.65); margin-bottom: .5rem; letter-spacing: .02em;
+    }
+
+    /* ── Support ── */
+    #support { background: linear-gradient(to bottom, var(--navy), #070f3a); }
+
+    /* ── Playlist ── */
+    #playlist { background: #070f3a; }
+
+    /* ── Footer ── */
+    footer {
+      background: #030c2e;
+      text-align: center; padding: 3rem 2rem;
+    }
+    .footer-logo {
+      font-weight: 900; font-size: 1.4rem;
+      letter-spacing: -.03em;
+      color: rgba(255,244,221,.25); margin-bottom: .6rem;
+    }
+    .footer-sub {
+      font-size: .62rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(255,244,221,.18);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero-layout { grid-template-columns: 1fr; }
+      .hero-poster-panel {
+        height: 55svh; min-height: 300px;
+        padding-top: 0;
+      }
+      .hero-poster-panel::after {
+        background: linear-gradient(to bottom, transparent 50%, rgba(8,28,90,.95) 100%);
+      }
+      .hero-info {
+        padding: 1.5rem 1.5rem 3rem;
+      }
+      .venue-grid { grid-template-columns: 1fr; }
+      .bands-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .bands-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 2.6rem; }
+    }
+
+    /* ── Reveal ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-logo">열대야</div>
+    <div class="nav-links">
+      <a href="#bands">밴드</a>
+      <a href="#timetable">타임테이블</a>
+      <a href="#playlist">플레이리스트</a>
+      <a href="#support">후원</a>
+      <a href="#venue">장소</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#venue" class="nav-cta">오시는 길</a>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-layout">
+
+      <!-- 포스터 이미지 -->
+      <div class="hero-poster-panel">
+        <div class="hero-poster-wrap">
+          <img src="poster.png" alt="열대야 공연 포스터" class="hero-poster-img" />
+        </div>
+      </div>
+
+      <!-- 공연 정보 -->
+      <div class="hero-info">
+        <div class="hero-tag">🧊 Live Concert · Free Entry</div>
+        <h1 class="hero-title">열대야<span class="pink">.</span></h1>
+        <p class="hero-date">26.06.27 (SAT) 5PM</p>
+        <p class="hero-venue">펄스라이브홀</p>
+
+        <div class="hero-bands">
+          <span class="hero-band-chip">holywater</span>
+          <span class="hero-band-chip">大ロ드ロ</span>
+          <span class="hero-band-chip">Downdog</span>
+          <span class="hero-band-chip">경쟁대응</span>
+          <span class="hero-band-chip">예랑도랑</span>
+        </div>
+
+        <!-- Countdown -->
+        <div class="countdown" id="countdown">
+          <div class="cd-unit"><span class="cd-num" id="cd-d">--</span><span class="cd-label">Days</span></div>
+          <div class="cd-unit"><span class="cd-num" id="cd-h">--</span><span class="cd-label">Hours</span></div>
+          <div class="cd-unit"><span class="cd-num" id="cd-m">--</span><span class="cd-label">Min</span></div>
+          <div class="cd-unit"><span class="cd-num" id="cd-s">--</span><span class="cd-label">Sec</span></div>
+        </div>
+
+        <div class="hero-btns">
+          <a href="#timetable" class="btn btn-primary">🎸 무료 입장</a>
+          <a href="#venue" class="btn btn-secondary">오시는 길</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">Scroll</div>
+  </section>
+
+  <!-- Intro -->
+  <section id="intro">
+    <div class="section-inner">
+      <p class="section-label reveal">About</p>
+      <h2 class="section-title reveal">여름을 녹이는<br>라이브 공연</h2>
+      <div class="divider reveal"></div>
+      <p class="intro-body reveal">
+        뜨거운 여름 저녁, 다섯 팀이 함께 만드는 인디 라이브 무대.<br>
+        <strong>holywater, 大ロ드ロ, Downdog, 경쟁대응, 예랑도랑</strong>이<br>
+        한여름 밤을 채웁니다.<br><br>
+        빙수처럼 시원하고, 여름처럼 뜨거운 하루.
+      </p>
+    </div>
+  </section>
+
+  <!-- Bands -->
+  <section id="bands">
+    <div class="section-inner">
+      <p class="section-label reveal">Line-up</p>
+      <h2 class="section-title reveal">출연 밴드</h2>
+      <div class="divider reveal"></div>
+      <div class="bands-grid">
+
+        <div class="band-card reveal" data-instagram="" data-youtube="">
+          <div class="band-img">hw</div>
+          <div class="band-info">
+            <div class="band-name">holywater</div>
+            <p class="band-desc">몽환적인 사운드와 깊은 보컬이 어우러진 인디팝 밴드</p>
+            <div class="band-links"></div>
+          </div>
+        </div>
+
+        <div class="band-card reveal" data-instagram="" data-youtube="">
+          <div class="band-img">大ロ</div>
+          <div class="band-info">
+            <div class="band-name">大ロ드ロ</div>
+            <p class="band-desc">독창적인 이름만큼 독특한 사운드를 들려주는 팀</p>
+            <div class="band-links"></div>
+          </div>
+        </div>
+
+        <div class="band-card reveal" data-instagram="" data-youtube="">
+          <div class="band-img">DD</div>
+          <div class="band-info">
+            <div class="band-name">Downdog</div>
+            <p class="band-desc">그루브와 감성을 동시에 잡는 여름의 밴드</p>
+            <div class="band-links"></div>
+          </div>
+        </div>
+
+        <div class="band-card reveal" data-instagram="" data-youtube="">
+          <div class="band-img">경쟁</div>
+          <div class="band-info">
+            <div class="band-name">경쟁대응</div>
+            <p class="band-desc">날카로운 가사와 탄탄한 앙상블로 무장한 인디 밴드</p>
+            <div class="band-links"></div>
+          </div>
+        </div>
+
+        <div class="band-card reveal" data-instagram="" data-youtube="">
+          <div class="band-img">예랑</div>
+          <div class="band-info">
+            <div class="band-name">예랑도랑</div>
+            <p class="band-desc">따뜻하고 경쾌한 에너지로 무대를 채우는 마지막 주자</p>
+            <div class="band-links"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Timetable -->
+  <section id="timetable">
+    <div class="section-inner">
+      <p class="section-label reveal">Schedule</p>
+      <h2 class="section-title reveal">타임테이블</h2>
+      <div class="divider reveal"></div>
+      <div class="tt-list">
+        <div class="tt-row reveal special">
+          <span class="tt-time">17:00</span>
+          <span class="tt-act">OPEN <span class="tt-badge">입장</span></span>
+        </div>
+        <div class="tt-row reveal">
+          <span class="tt-time">17:30</span>
+          <span class="tt-act">holywater</span>
+        </div>
+        <div class="tt-row reveal">
+          <span class="tt-time">18:10</span>
+          <span class="tt-act">大ロ드ロ</span>
+        </div>
+        <div class="tt-row reveal">
+          <span class="tt-time">18:50</span>
+          <span class="tt-act">Downdog</span>
+        </div>
+        <div class="tt-row reveal">
+          <span class="tt-time">19:30</span>
+          <span class="tt-act">경쟁대응</span>
+        </div>
+        <div class="tt-row reveal">
+          <span class="tt-time">20:10</span>
+          <span class="tt-act">예랑도랑</span>
+        </div>
+        <div class="tt-row reveal special">
+          <span class="tt-time">21:00</span>
+          <span class="tt-act">END</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Venue -->
+  <section id="venue">
+    <div class="section-inner">
+      <p class="section-label reveal">Location</p>
+      <h2 class="section-title reveal">공연 장소</h2>
+      <div class="divider reveal"></div>
+      <div class="venue-grid">
+        <div class="venue-info reveal">
+          <div class="venue-block">
+            <div class="venue-block-title">장소</div>
+            <div class="venue-block-body"><strong>펄스라이브홀</strong><br>서울특별시 OO구 OO로 OOO</div>
+          </div>
+          <div class="venue-block">
+            <div class="venue-block-title">대중교통</div>
+            <div class="venue-block-body">지하철 O호선 OO역 O번 출구<br>도보 약 5분</div>
+          </div>
+          <div class="venue-block">
+            <div class="venue-block-title">주차</div>
+            <div class="venue-block-body">별도 주차 공간 없음<br>인근 유료 주차장 이용 권장</div>
+          </div>
+        </div>
+        <div class="map-placeholder reveal">
+          <div class="map-icon">📍</div>
+          <div class="map-label">Google Maps Embed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="section-inner">
+      <p class="section-label reveal">FAQ</p>
+      <h2 class="section-title reveal">자주 묻는 질문</h2>
+      <div class="divider reveal"></div>
+      <div class="faq-list reveal">
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            입장 가능 시간은 언제인가요?<span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">17:00부터 입장 가능합니다. 일찍 오실수록 좋은 자리를 잡을 수 있어요!</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            입장료가 있나요?<span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">무료 공연입니다. 누구든 자유롭게 오실 수 있어요 🎸</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            음식 반입이 가능한가요?<span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">외부 음식 반입은 불가능합니다. 공연장 내 음료 판매를 이용해 주세요.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            굿즈 판매가 있나요?<span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">굿즈 판매가 예정되어 있습니다. 자세한 내용은 추후 공지될 예정이에요.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            전 연령 관람이 가능한가요?<span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">전 연령 관람 가능한 공연입니다. 미성년자는 보호자 동반을 권장합니다.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Free Entry CTA -->
+  <section id="ticket">
+    <div class="section-inner ticket-inner" style="text-align:center; padding: 8rem 2rem;">
+      <p class="section-label" style="color:rgba(255,244,221,.5); display:flex; justify-content:center; margin-bottom:1.2rem;">Entry</p>
+      <h2 class="ticket-title">무료 입장</h2>
+      <p class="ticket-sub" style="font-size:1.1rem; margin-bottom:.5rem;">누구든, 언제든, 그냥 오세요.</p>
+      <p class="ticket-sub">26.06.27 (SAT) &nbsp;·&nbsp; 펄스라이브홀 &nbsp;·&nbsp; 17:00 OPEN</p>
+      <div style="margin-top:2.2rem; display:inline-block; padding: .9rem 2.2rem;
+                  border: 1px solid rgba(255,244,221,.35); border-radius:4px;">
+        <span style="font-size:.8rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--cream);">
+          Free · All Welcome
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Support / Donation -->
+  <section id="support">
+    <div class="section-inner" style="text-align:center;">
+      <p class="section-label reveal" style="justify-content:center; display:flex;">Support</p>
+      <h2 class="section-title reveal">밴드를 응원해요</h2>
+      <div class="divider reveal" style="margin:0 auto 2rem;"></div>
+      <p class="reveal" style="color:rgba(255,244,221,.6); font-size:.92rem; line-height:1.9; margin-bottom:2.2rem;">
+        공연은 무료지만, 밴드에게 작은 응원을 보내고 싶다면<br>
+        아래 QR을 스캔하거나 링크를 통해 후원할 수 있어요 🙏
+      </p>
+      <div class="reveal" style="display:inline-flex; flex-direction:column; align-items:center; gap:1rem;">
+        <div style="background:var(--cream); padding:.9rem; border-radius:10px; display:inline-block;">
+          <img src="qr.png" alt="후원 QR 코드"
+               style="width:176px; height:176px; display:block; image-rendering:pixelated;" />
+        </div>
+        <a href="DONATION_URL_HERE" target="_blank" rel="noopener" id="donation-link"
+           style="font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+                  color:var(--pink); border:1px solid rgba(245,108,168,.4); padding:.55rem 1.4rem;
+                  border-radius:3px; transition:background .15s, color .15s; display:inline-block;"
+           onmouseover="this.style.background='#F56CA8';this.style.color='#081C5A'"
+           onmouseout="this.style.background='transparent';this.style.color='#F56CA8'">
+          💸 링크로 후원하기
+        </a>
+        <p style="font-size:.6rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
+                  color:rgba(255,244,221,.22);">QR 코드를 카메라로 스캔하세요</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Playlist -->
+  <section id="playlist">
+    <div class="section-inner">
+      <p class="section-label reveal">Music</p>
+      <h2 class="section-title reveal">플레이리스트</h2>
+      <div class="divider reveal"></div>
+      <div class="reveal" style="max-width:720px;">
+        <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:10px; overflow:hidden; border:1px solid rgba(255,244,221,.1);">
+          <iframe
+            src="https://www.youtube.com/embed/videoseries?list=PLz7A8w3UfmiwxfO8-nf10tNUv42ojxV--"
+            title="열대야 플레이리스트"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div style="margin-top:1rem; text-align:right;">
+          <a href="https://youtube.com/playlist?list=PLz7A8w3UfmiwxfO8-nf10tNUv42ojxV--"
+             target="_blank" rel="noopener"
+             style="font-size:.7rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
+                    color:rgba(255,244,221,.45); border:1px solid rgba(255,244,221,.18); padding:.4rem 1rem;
+                    border-radius:3px; display:inline-block; transition:color .15s, border-color .15s;"
+             onmouseover="this.style.color='#F56CA8';this.style.borderColor='#F56CA8'"
+             onmouseout="this.style.color='rgba(255,244,221,.45)';this.style.borderColor='rgba(255,244,221,.18)'">
+            ▶ YouTube에서 열기
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">열대야</div>
+    <p class="footer-sub">© 2026 열대야 · 여름날의 라이브 · 펄스라이브홀</p>
+  </footer>
+
+  <script>
+    // ── Band links 조건부 렌더링 ──
+    document.querySelectorAll('.band-card').forEach(card => {
+      const ig = card.dataset.instagram;
+      const yt = card.dataset.youtube;
+      const container = card.querySelector('.band-links');
+      if (ig) container.insertAdjacentHTML('beforeend',
+        `<a href="${ig}" target="_blank" rel="noopener" class="band-link">Instagram</a>`);
+      if (yt) container.insertAdjacentHTML('beforeend',
+        `<a href="${yt}" target="_blank" rel="noopener" class="band-link">YouTube</a>`);
+      if (!ig && !yt) container.remove();
+    });
+
+    // ── Countdown ── 26.06.27 17:00 KST
+    const concertDate = new Date('2026-06-27T17:00:00+09:00');
+    function updateCountdown() {
+      const diff = concertDate - new Date();
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML =
+          '<span style="font-family:var(--font-mono);color:var(--pink);font-size:1.1rem;letter-spacing:.08em">🎸 공연 중!</span>';
+        return;
+      }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+      document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+      document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+      document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ── Scroll Reveal ──
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── FAQ ──
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+</body>
+</html>
