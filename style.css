@@ -31,6 +31,7 @@ nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 1rem 2rem;
+  -webkit-backdrop-filter: blur(14px); 
   backdrop-filter: blur(14px);
   background: rgba(8,28,90,.72);
       border-bottom: 1px solid rgba(245,108,168,.15);
@@ -501,6 +502,7 @@ nav {
 }
 
 .floating-support:hover {
+  animation-play-state: paused;
   transform: translateY(-3px);
   box-shadow: 0 16px 40px rgba(245,108,168,.5);
 }
