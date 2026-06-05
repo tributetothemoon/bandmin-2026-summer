@@ -271,16 +271,22 @@ nav {
       font-size: .78rem; line-height: 1.65;
       color: rgba(255,244,221,.45); margin-bottom: .75rem;
     }
-    .band-links { display: flex; gap: .4rem; }
+    .band-links { display: flex; gap: .5rem; }
     .band-link {
-      font-size: .62rem; font-weight: 600;
-      letter-spacing: .08em; text-transform: uppercase;
-      padding: .28rem .65rem;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; padding: 0;
       border: 1px solid rgba(255,244,221,.18);
-      border-radius: 3px; color: rgba(255,244,221,.45);
-      transition: border-color .15s, color .15s;
+      border-radius: 7px;
+      transition: border-color .15s, background .15s, transform .15s;
     }
-    .band-link:hover { border-color: var(--pink); color: var(--pink); }
+    .band-link img {
+      width: 18px; height: 18px; display: block; object-fit: contain;
+    }
+    .band-link:hover {
+      border-color: var(--pink);
+      background: rgba(245,108,168,.12);
+      transform: translateY(-1px);
+    }
 
     /* ── Timetable ── */
     #timetable { background: linear-gradient(to bottom, #070f3a, var(--navy)); }
