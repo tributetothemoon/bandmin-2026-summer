@@ -309,7 +309,7 @@ nav {
       max-width: 600px; margin-left: auto; margin-right: auto;
     }
     .tt-row {
-      display: grid; grid-template-columns: 80px 1fr;
+      display: grid; grid-template-columns: 80px 1fr 24px;
       align-items: center; gap: 1rem;
       padding: 1rem 1.2rem;
       background: rgba(255,255,255,.04);
@@ -317,6 +317,7 @@ nav {
       border-radius: 8px;
       transition: background .2s, border-color .2s;
     }
+
     .tt-row:hover { background: rgba(245,108,168,.07); border-color: rgba(245,108,168,.2); }
     .tt-row.special { border-color: rgba(245,108,168,.25); background: rgba(245,108,168,.05); }
     .tt-time {
@@ -350,7 +351,15 @@ nav {
     .song-title { color: var(--cream); font-size: .82rem; font-weight: 600; }
     .song-artist { color: var(--pink); font-size: .82rem; font-weight: 500; }
     .song-artist::before { content: '•'; color: rgba(255,244,221,.3); margin-right: .35rem; }
+    .setlist-toggle::after {
+      content: '+';
+      color: var(--pink);
+      justify-self: end;
+    }
     
+    .setlist-toggle.active::after {
+      content: '−';
+    }
     .tt-row { cursor: pointer; }
     .tt-row::after {
       content: '+';
