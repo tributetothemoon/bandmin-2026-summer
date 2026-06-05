@@ -280,7 +280,12 @@ nav {
       transition: border-color .15s, background .15s, transform .15s;
     }
     .band-link img {
-      width: 18px; height: 18px; display: block; object-fit: contain;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 18px;
+      height: 18px;
+      transform: translate(-50%, -50%);
     }
     .band-link:hover {
       border-color: var(--pink);
