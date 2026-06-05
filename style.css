@@ -489,7 +489,7 @@ nav {
     }
 
     .donation-btn {
-      font-size: .75rem;
+      font-size: 1rem;
       font-weight: 700;
       letter-spacing: .12em;
       text-transform: uppercase;
@@ -578,9 +578,19 @@ nav {
   box-shadow: 0 12px 34px rgba(245,108,168,.38);
   will-change: transform;
   transition: transform .15s ease,
-              box-shadow .15s ease;
+              box-shadow .15s ease,
+              opacity .35s ease,
+              visibility .35s ease;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 
   animation: floatPulse 2s ease-in-out infinite;
+}
+.floating-support.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .floating-support:hover {
