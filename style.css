@@ -301,25 +301,26 @@ nav {
 
     /* ── Timetable ── */
     #timetable { background: linear-gradient(to bottom, #070f3a, var(--navy)); }
-    /* 중앙 정렬 */
     #timetable .section-inner { text-align: center; }
     #timetable .divider { margin-left: auto; margin-right: auto; }
+
     .tt-list {
-      display: flex; flex-direction: column; gap: .6rem;
-      max-width: 600px; margin-left: auto; margin-right: auto;
-    }
-    .tt-row {
-      display: grid; grid-template-columns: 80px 1fr 24px;
-      align-items: center; gap: 1rem;
-      padding: 1rem 1.2rem;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,244,221,.07);
-      border-radius: 8px;
-      transition: background .2s, border-color .2s;
+      display: flex; flex-direction: column; gap: .55rem;
+      max-width: 600px; margin: 0 auto;
+      text-align: left;
     }
 
-    .tt-row:hover { background: rgba(245,108,168,.07); border-color: rgba(245,108,168,.2); }
-    .tt-row.special { border-color: rgba(245,108,168,.25); background: rgba(245,108,168,.05); }
+    /* 공통 행 (OPEN/END · 밴드 토글 모두 사용) */
+    .tt-row {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      align-items: center; gap: 1rem;
+      padding: 1rem 1.3rem;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,244,221,.08);
+      border-radius: 12px;
+      transition: background .2s, border-color .2s;
+    }
     .tt-time {
       font-family: var(--font-mono); font-size: .82rem;
       color: var(--pink); letter-spacing: .04em;
@@ -329,46 +330,70 @@ nav {
       display: inline-block;
       font-size: .55rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
       background: var(--pink); color: var(--navy);
-      padding: .12rem .45rem; border-radius: 2px; margin-left: .5rem; vertical-align: middle;
+      padding: .14rem .5rem; border-radius: 3px; margin-left: .5rem; vertical-align: middle;
     }
 
+    /* OPEN / END 강조행 */
+    .tt-row.special {
+      border-color: rgba(245,108,168,.25);
+      background: rgba(245,108,168,.05);
+    }
+
+    /* 밴드 토글 버튼 (FAQ 아코디언과 동일한 결) */
+    .tt-toggle {
+      grid-template-columns: 64px 1fr auto;
+      width: 100%; font-family: var(--font-kr); color: var(--cream);
+      cursor: pointer; appearance: none; -webkit-appearance: none;
+      text-align: left;
+    }
+    .tt-toggle:hover { background: rgba(245,108,168,.08); border-color: rgba(245,108,168,.22); }
+    .tt-chevron {
+      font-family: var(--font-mono); font-size: 1.2rem; line-height: 1;
+      color: var(--pink); justify-self: end;
+      transition: transform .3s ease;
+    }
+
+    /* 열린 상태: 행과 셋리스트가 하나의 카드처럼 이어짐 */
+    .tt-group.open .tt-toggle {
+      background: rgba(245,108,168,.12);
+      border-color: rgba(245,108,168,.3);
+      border-bottom-color: transparent;
+      border-bottom-left-radius: 0; border-bottom-right-radius: 0;
+    }
+    .tt-group.open .tt-chevron { transform: rotate(45deg); } /* + → × */
+
+    /* 셋리스트 패널 */
     .setlist {
       max-height: 0; overflow: hidden;
-      max-width: 600px; margin: -.2rem auto .8rem;
-      padding: 0 1rem; border-radius: 8px;
-      background: linear-gradient(135deg, rgba(13,57,217,.12), rgba(245,108,168,.08));
-      transition: max-height .35s ease, padding .35s ease;
+      border: 1px solid transparent; border-top: none;
+      border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
+      transition: max-height .35s ease, padding .35s ease, border-color .35s ease;
     }
-    .setlist.open { max-height: 500px; padding: .8rem 1rem; }
-    
+    .tt-group.open .setlist {
+      max-height: 700px;
+      padding: .4rem 1.3rem .8rem;
+      background: rgba(245,108,168,.05);
+      border-color: rgba(245,108,168,.3);
+    }
+
+    .setlist-songs { list-style: none; margin: 0; padding: 0; }
     .song-item {
-      display: flex; justify-content: center; gap: .35rem;
-      padding: .45rem 0;
-      border-bottom: 1px solid rgba(255,244,221,.08);
+      display: grid;
+      grid-template-columns: 22px 1fr auto;
+      align-items: baseline; gap: .7rem;
+      padding: .55rem .1rem;
+      border-bottom: 1px solid rgba(255,244,221,.07);
     }
     .song-item:last-child { border-bottom: none; }
-    
-    .song-title { color: var(--cream); font-size: .82rem; font-weight: 600; }
-    .song-artist { color: var(--pink); font-size: .82rem; font-weight: 500; }
-    .song-artist::before { content: '•'; color: rgba(255,244,221,.3); margin-right: .35rem; }
-    .setlist-toggle::after {
-      content: '+';
-      color: var(--pink);
-      justify-self: end;
+    .song-no {
+      font-family: var(--font-mono); font-size: .72rem;
+      color: rgba(245,108,168,.7);
     }
-    
-    .setlist-toggle.active::after {
-      content: '−';
+    .song-title { color: var(--cream); font-size: .9rem; font-weight: 600; letter-spacing: -.01em; }
+    .song-artist {
+      color: rgba(255,244,221,.45); font-size: .76rem; font-weight: 500;
+      justify-self: end; text-align: right;
     }
-    .tt-row { cursor: pointer; }
-    .tt-row::after {
-      content: '+';
-      color: var(--pink);
-      font-size: 1rem;
-      justify-self: end;
-    }
-    .tt-row.active::after { content: '−'; }
-
 
 
     /* ── Venue ── */
