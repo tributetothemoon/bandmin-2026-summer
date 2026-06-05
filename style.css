@@ -70,16 +70,21 @@ nav {
 
     /* 전체 배경 이미지 */
     .hero-bg-img {
-      position: absolute; inset: 0; z-index: 0;
-      width: 100%; height: 100%;
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);   /* 가운데 정렬 */
+      width: 80%;                     
+      height: 100%;
       object-fit: cover;
       object-position: center center;
       display: block;
+      z-index: 0;
     }
 
     /* 그라데이션 오버레이 (100% → 0%): 텍스트 가독성 + 상단 잘림 블렌딩 */
     .hero-overlay {
-      position: absolute; inset: 0; z-index: 1;
+      position: absolute; top/bottom:0; left:50%; transform:translateX(-50%); width:80%; z-index: 1;
       pointer-events: none;
       background:
         /* 중앙 텍스트 영역 살짝 어둡게 */
