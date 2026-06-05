@@ -331,6 +331,37 @@ nav {
       padding: .12rem .45rem; border-radius: 2px; margin-left: .5rem; vertical-align: middle;
     }
 
+    .setlist {
+      max-height: 0; overflow: hidden;
+      max-width: 600px; margin: -.2rem auto .8rem;
+      padding: 0 1rem; border-radius: 8px;
+      background: linear-gradient(135deg, rgba(13,57,217,.12), rgba(245,108,168,.08));
+      transition: max-height .35s ease, padding .35s ease;
+    }
+    .setlist.open { max-height: 500px; padding: .8rem 1rem; }
+    
+    .song-item {
+      display: flex; justify-content: center; gap: .35rem;
+      padding: .45rem 0;
+      border-bottom: 1px solid rgba(255,244,221,.08);
+    }
+    .song-item:last-child { border-bottom: none; }
+    
+    .song-title { color: var(--cream); font-size: .82rem; font-weight: 600; }
+    .song-artist { color: var(--pink); font-size: .82rem; font-weight: 500; }
+    .song-artist::before { content: '•'; color: rgba(255,244,221,.3); margin-right: .35rem; }
+    
+    .tt-row { cursor: pointer; }
+    .tt-row::after {
+      content: '+';
+      color: var(--pink);
+      font-size: 1rem;
+      justify-self: end;
+    }
+    .tt-row.active::after { content: '−'; }
+
+
+
     /* ── Venue ── */
     #venue { background: var(--navy); }
     .venue-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
