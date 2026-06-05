@@ -454,7 +454,7 @@ nav {
       .nav-links { display: none; }
       #hero { padding: 6rem 1.2rem 3.5rem; }
       .hero-content { max-width: 100%; }
-      .hero-bg-img { width: 90%; left: 0; transform: none; }
+      .hero-bg-img, .hero-overlay { width: 90%; }
       .venue-grid { grid-template-columns: 1fr; }
       .bands-grid { grid-template-columns: 1fr 1fr; }
       
@@ -464,7 +464,7 @@ nav {
       .band-name { font-size: .9rem; }
       .band-info { padding: .7rem .8rem .8rem; }
       .hero-title { font-size: 2.6rem; }
-      .hero-bg-img { width: 90%; left: 0; transform: none; }
+      .hero-bg-img, .hero-overlay { width: 90%; }
     }
 
     /* ── Reveal ── */
