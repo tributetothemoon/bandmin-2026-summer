@@ -505,6 +505,17 @@
       document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
       if (!isOpen) item.classList.add('open');
     }
+    // 응원하기 버튼: hero에선 숨기고, 아래로 내려가면 표시
+    (function () {
+      const fab = document.querySelector('.floating-support');
+      const hero = document.getElementById('hero');
+      if (fab && hero) {
+        const heroObserver = new IntersectionObserver(([entry]) => {
+          fab.classList.toggle('show', entry.intersectionRatio < 0.5);
+        }, { threshold: [0, 0.5, 1] });
+        heroObserver.observe(hero);
+      }
+    })();
   </script>
 </body>
 </html>
