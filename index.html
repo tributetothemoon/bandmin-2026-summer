@@ -16,8 +16,8 @@
 
   <!-- Nav -->
   <nav>
-    <div class="nav-logo">열대야</div>
     <div class="nav-links">
+      <a href="#hero" class="nav-logo" id="nav-logo">열대야</a>
       <a href="#bands">밴드</a>
       <a href="#timetable">타임테이블</a>
       <a href="#playlist">미리듣기</a>
@@ -135,7 +135,7 @@
   <!-- Timetable -->
   <section id="timetable">
     <div class="section-inner">
-      <p class="section-label reveal">Schedule</p>
+      <p class="section-label reveal">Timetable</p>
       <h2 class="section-title reveal">타임테이블</h2>
       <div class="divider reveal"></div>
       <div class="tt-list">
@@ -450,6 +450,10 @@
   </footer>
 
   <script>
+    document.getElementById('nav-logo')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
     // ── Band links 조건부 렌더링 ──
     document.querySelectorAll('.band-card').forEach(card => {
       const ig = card.dataset.instagram;
