@@ -63,6 +63,7 @@ nav {
       position: relative;
       min-height: 100svh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       overflow: hidden;
@@ -606,19 +607,16 @@ nav {
     @media (max-width: 768px) {
       .nav-links { display: none; }
     
-      #hero {
-        padding: 6rem 1.2rem 3.5rem;
-        align-items: center;
-        justify-content: center;
-      }
+    #hero {
+      padding: 6rem 1.2rem 3.5rem;
+    }
     
       .hero-content {
         max-width: 100%;
-        flex-direction: column;
         align-items: center;
         text-align: center;
       }
-    
+
       /* 배경은 전체 너비로 */
       .hero-bg-img { width: 100%; }
       .hero-overlay {
