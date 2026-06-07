@@ -63,11 +63,10 @@ nav {
       position: relative;
       min-height: 100svh;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       overflow: hidden;
-      /* 여백조정: 상단 nav 아래 여유 + 양옆/하단 여백으로 이미지 잘림 자연스럽게 */
-      padding: 7rem 1.5rem 4.5rem;
+      padding: 5rem 1.5rem 4.5rem;
     }
 
     /* 전체 배경 이미지 */
@@ -84,27 +83,22 @@ nav {
     }
     
     /* Hero: 아이스크림 이미지 — 하단 중앙 */
+    /* 아이스크림 이미지 — flow 안에 배치 */
     .hero-hero-img {
-      position: absolute;
-      bottom: -2%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(90%, 520px);
+      position: relative;
+      width: min(70%, 420px);   /* 70%로 축소 */
       z-index: 1;
       pointer-events: none;
+      margin-bottom: 0;
     }
     
-    /* Title: 열대야 텍스트 이미지 — 상단 중앙 */
+    /* title이미지 — hero-top 안에서 flow 배치 */
     .hero-title-img {
-      position: absolute;
-      top: 18%;          /* 아래로 내려서 아이스크림과 겹치는 위치로 */
-      left: 50%;
-      transform: translateX(-50%);
+      position: relative;
       width: min(85%, 480px);
-      z-index: 0;        /* hero-hero-img(z-index:1)보다 낮게 → 아이스크림 뒤로 */
+      z-index: 0;
       pointer-events: none;
     }
-    
     /* 그라데이션 오버레이: 하단 페이드 */
     .hero-overlay {
       position: absolute; inset: 0; z-index: 3;
@@ -128,6 +122,15 @@ nav {
       text-align: center;
       max-width: 760px; width: 100%;
     }
+    
+    /* tag + title이미지 묶음 */
+    .hero-top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;           /* tag와 title이미지 사이 여백 최소화 */
+      margin-bottom: 0;
+    }
     .hero-tag {
       display: inline-flex; align-items: center; gap: .5rem;
       font-size: .68rem; font-weight: 600;
@@ -135,7 +138,8 @@ nav {
       color: var(--pink);
       border: 1px solid rgba(245,108,168,.35);
       padding: .3rem .9rem; border-radius: 20px;
-      margin-bottom: 1.8rem; width: fit-content;
+      margin-bottom: 0;     /* hero-top gap으로 제어 */
+      width: fit-content;
       animation: fadeUp .8s ease both;
     }
     .hero-title {
@@ -175,15 +179,16 @@ nav {
       position: relative;
       display: inline-flex;
       align-items: center;
-      padding: .45rem 1.2rem;
+      font-size: .72rem; font-weight: 600;
+      padding: .25rem .7rem;
+      background: rgba(255,255,255,.06);
       border-radius: 20px;
-      font-size: .78rem;
-      font-weight: 500;
-      letter-spacing: .04em;
-      color: var(--cream);
-      background: transparent;
-      /* border 제거 — pseudo로 대체 */
       isolation: isolate;
+      /* 글씨 그라데이션 */
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-image: linear-gradient(to right, #FF84F6, #A59FF3, #FF84F6);
     }
     
     .hero-band-chip::before {
@@ -191,7 +196,7 @@ nav {
       position: absolute;
       inset: 0;
       border-radius: 20px;
-      padding: 1.5px; /* border 두께 */
+      padding: 1px;
       background: linear-gradient(to right, #FF84F6, #A59FF3, #FF84F6);
       -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
