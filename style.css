@@ -141,9 +141,10 @@ nav {
     }
     .hero-tag {
       position: absolute;
-      top: 5%;                        /* hero-title-img(top:8%) 바로 위 */
-      left: 50%;
-      transform: translateX(-50%);
+      top: 5%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
       z-index: 5;
       display: inline-flex; align-items: center; gap: .5rem;
       font-size: .68rem; font-weight: 600;
