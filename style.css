@@ -97,11 +97,11 @@ nav {
     /* Title: 열대야 텍스트 이미지 — 상단 중앙 */
     .hero-title-img {
       position: absolute;
-      top: 10%;
+      top: 18%;          /* 아래로 내려서 아이스크림과 겹치는 위치로 */
       left: 50%;
       transform: translateX(-50%);
       width: min(85%, 480px);
-      z-index: 2;
+      z-index: 0;        /* hero-hero-img(z-index:1)보다 낮게 → 아이스크림 뒤로 */
       pointer-events: none;
     }
     
