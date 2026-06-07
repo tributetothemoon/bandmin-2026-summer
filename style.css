@@ -168,7 +168,7 @@ nav {
     /* title이미지 — hero-top 안에서 flow 배치 */
     .hero-title-img {
       position: absolute;
-      top: 8%;
+      top: 7%;
       left: 50%;
       transform: translateX(-50%);
       width: min(85%, 520px);
@@ -211,7 +211,7 @@ nav {
     }
     .hero-tag {
       position: absolute;
-      top: 5%;
+      top: 2%;
       left: 0;
       right: 0;
       margin: 0 auto;
@@ -336,10 +336,7 @@ nav {
 
     /* scroll hint */
     .scroll-hint {
-      position: fixed;
-      bottom: 1.8rem;
-      left: 50%;
-      transform: translateX(-50%);
+      position: absolute; bottom: 1.8rem; left: 50%; transform: translateX(-50%);
       display: flex; flex-direction: column; align-items: center; gap: .4rem;
       font-size: .6rem; letter-spacing: .15em; text-transform: uppercase;
       color: rgba(255,244,221,.25); z-index: 5;
