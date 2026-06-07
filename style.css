@@ -168,7 +168,7 @@ nav {
     /* title이미지 — hero-top 안에서 flow 배치 */
     .hero-title-img {
       position: absolute;
-      top: 7%;
+      top: 10%;
       left: 50%;
       transform: translateX(-50%);
       width: min(85%, 520px);
@@ -211,7 +211,7 @@ nav {
     }
     .hero-tag {
       position: absolute;
-      top: 72px;
+      top: 88px;
       left: 0;
       right: 0;
       margin: 0 auto;
@@ -221,7 +221,7 @@ nav {
       letter-spacing: .18em; text-transform: uppercase;
       color: var(--pink);
       border: 1px solid rgba(245,108,168,.35);
-      padding: .6rem 1.2rem; border-radius: 20px;
+      padding: .3rem .9rem; border-radius: 20px;
       width: fit-content;
       white-space: nowrap;
       animation: fadeUp .8s ease both;
@@ -707,7 +707,7 @@ nav {
     
       /* 이미지들 모바일 크기/위치 */
       .hero-title-img {
-        top: 10%;
+        top: 13%;
         width: min(85%, 360px);
       }
     
