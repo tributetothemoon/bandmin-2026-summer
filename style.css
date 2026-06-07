@@ -63,7 +63,7 @@ nav {
       position: relative;
       min-height: 100svh;
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
       overflow: hidden;
       padding: 5rem 1.5rem 4.5rem;
@@ -85,17 +85,22 @@ nav {
     /* Hero: 아이스크림 이미지 — 하단 중앙 */
     /* 아이스크림 이미지 — flow 안에 배치 */
     .hero-hero-img {
-      position: relative;
-      width: min(70%, 420px);   /* 70%로 축소 */
+      position: absolute;
+      top: 16%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(70%, 440px);
       z-index: 1;
       pointer-events: none;
-      margin-bottom: 0;
     }
     
     /* title이미지 — hero-top 안에서 flow 배치 */
     .hero-title-img {
-      position: relative;
-      width: min(85%, 480px);
+      position: absolute;
+      top: 12%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(85%, 520px);
       z-index: 0;
       pointer-events: none;
     }
@@ -122,7 +127,9 @@ nav {
       text-align: center;
       max-width: 760px; width: 100%;
     }
-    
+    .hero-img-spacer {
+      height: clamp(260px, 52vw, 480px);   /* hero-hero-img 높이에 맞게 조정 */
+    }
     /* tag + title이미지 묶음 */
     .hero-top {
       display: flex;
@@ -138,7 +145,7 @@ nav {
       color: var(--pink);
       border: 1px solid rgba(245,108,168,.35);
       padding: .3rem .9rem; border-radius: 20px;
-      margin-bottom: 0;     /* hero-top gap으로 제어 */
+      margin-bottom: .6rem;   /* title이미지와 바짝 붙게 */
       width: fit-content;
       animation: fadeUp .8s ease both;
     }
