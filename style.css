@@ -221,7 +221,7 @@ nav {
       letter-spacing: .18em; text-transform: uppercase;
       color: var(--pink);
       border: 1px solid rgba(245,108,168,.35);
-      padding: .3rem .9rem; border-radius: 20px;
+      padding: .6rem 1.2rem; border-radius: 20px;
       width: fit-content;
       white-space: nowrap;
       animation: fadeUp .8s ease both;
@@ -685,7 +685,7 @@ nav {
       .nav-links { display: none; }
     
     #hero {
-      padding: 6rem 1.2rem 3.5rem;
+      padding: 6rem 1.2rem 5rem;
     }
       .hero-tag {
         top: 68px;
