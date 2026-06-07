@@ -129,7 +129,7 @@ nav {
       max-width: 760px; width: 100%;
     }
     .hero-img-spacer {
-      height: clamp(240px, 48vw, 460px);   /* hero-hero-img 높이에 맞게 조정 */
+      height: clamp(320px, 105vw, 480px);
     }
     /* tag + title이미지 묶음 */
     .hero-top {
