@@ -90,7 +90,7 @@ nav {
       top: 16%;
       left: 50%;
       transform: translateX(-50%);
-      width: min(70%, 440px);
+      width: min(60%, 400px);
       z-index: 1;
       pointer-events: none;
     }
@@ -140,15 +140,19 @@ nav {
       margin-bottom: 0;
     }
     .hero-tag {
+      position: absolute;
+      top: 5%;                        /* hero-title-img(top:8%) 바로 위 */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
       display: inline-flex; align-items: center; gap: .5rem;
       font-size: .68rem; font-weight: 600;
       letter-spacing: .18em; text-transform: uppercase;
       color: var(--pink);
       border: 1px solid rgba(245,108,168,.35);
       padding: .3rem .9rem; border-radius: 20px;
-      margin-bottom: 1.2rem;   /* title이미지와 바짝 붙게 */
-      margin-top: .5rem;
       width: fit-content;
+      white-space: nowrap;
       animation: fadeUp .8s ease both;
     }
     .hero-title {
