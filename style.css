@@ -168,7 +168,7 @@ nav {
     /* title이미지 — hero-top 안에서 flow 배치 */
     .hero-title-img {
       position: absolute;
-      top: 10%;
+      top: 7%;
       left: 50%;
       transform: translateX(-50%);
       width: min(85%, 520px);
@@ -707,7 +707,7 @@ nav {
     
       /* 이미지들 모바일 크기/위치 */
       .hero-title-img {
-        top: 13%;
+        top: 10%;
         width: min(85%, 360px);
       }
     
