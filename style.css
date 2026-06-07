@@ -336,10 +336,15 @@ nav {
 
     /* scroll hint */
     .scroll-hint {
-      position: absolute; bottom: 1.8rem; left: 50%; transform: translateX(-50%);
+      position: fixed;
+      bottom: 1.8rem;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex; flex-direction: column; align-items: center; gap: .4rem;
       font-size: .6rem; letter-spacing: .15em; text-transform: uppercase;
-      color: rgba(255,244,221,.25); z-index: 3;
+      color: rgba(255,244,221,.25); z-index: 5;
+      pointer-events: none;
+      transition: opacity .3s;
     }
     .scroll-hint::after {
       content: ''; display: block; width: 1px; height: 36px;
