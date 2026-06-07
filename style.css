@@ -688,7 +688,7 @@ nav {
       padding: 6rem 1.2rem 5rem;
     }
       .hero-tag {
-        top: 68px;
+        top: 74px;
       }
     
       .hero-content {
@@ -707,7 +707,7 @@ nav {
     
       /* 이미지들 모바일 크기/위치 */
       .hero-title-img {
-        top: 13%;
+        top: 11%;
         width: min(85%, 360px);
       }
     
@@ -726,6 +726,9 @@ nav {
     
       .venue-grid { grid-template-columns: 1fr; }
       .bands-grid { grid-template-columns: 1fr 1fr; }
+      .scroll-hint {
+          display: none;
+      }
     }
     @media (max-width: 480px) {
       .bands-grid { grid-template-columns: repeat(2, 1fr); gap: .7rem; }
