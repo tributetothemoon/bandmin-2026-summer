@@ -26,8 +26,11 @@
 
   <!-- Nav -->
   <nav>
+    <a href="#hero" class="nav-logo" id="nav-logo">
+      <img src="tropical_poster_title.png" alt="열대야" />
+    </a>
+  
     <div class="nav-links">
-      <a href="#hero" class="nav-logo" id="nav-logo">열대야</a>
       <a href="#bands">밴드</a>
       <a href="#timetable">타임테이블</a>
       <a href="#playlist">미리듣기</a>
@@ -35,8 +38,25 @@
       <a href="#venue">장소</a>
       <a href="#faq">FAQ</a>
     </div>
-    <a href="#venue" class="nav-cta">오시는 길</a>
+  
+    <div class="nav-right">
+      <a href="#venue" class="nav-cta">오시는 길</a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="메뉴">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
+  
+  <!-- 모바일 드로어 -->
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="#bands" class="drawer-link">밴드</a>
+    <a href="#timetable" class="drawer-link">타임테이블</a>
+    <a href="#playlist" class="drawer-link">미리듣기</a>
+    <a href="#support" class="drawer-link">응원</a>
+    <a href="#venue" class="drawer-link">장소</a>
+    <a href="#faq" class="drawer-link">FAQ</a>
+    <a href="#venue" class="drawer-link drawer-cta">오시는 길</a>
+  </div>
 
   <!-- Hero -->
  <section id="hero">
@@ -410,6 +430,23 @@
           } catch (err) {
             alert(text);
           }
+        });
+
+          // 햄버거 메뉴
+        const hamburger = document.getElementById('nav-hamburger');
+        const drawer = document.getElementById('nav-drawer');
+        
+        hamburger?.addEventListener('click', () => {
+          hamburger.classList.toggle('open');
+          drawer.classList.toggle('open');
+        });
+        
+        // 드로어 링크 클릭시 닫기
+        drawer?.querySelectorAll('.drawer-link').forEach(link => {
+          link.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            drawer.classList.remove('open');
+          });
         });
         </script>
         <p style="font-size:.6rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
