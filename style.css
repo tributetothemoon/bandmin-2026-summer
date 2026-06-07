@@ -211,7 +211,7 @@ nav {
     }
     .hero-tag {
       position: absolute;
-      top: 4%;
+      top: 72px;
       left: 0;
       right: 0;
       margin: 0 auto;
@@ -687,6 +687,9 @@ nav {
     #hero {
       padding: 6rem 1.2rem 3.5rem;
     }
+      .hero-tag {
+        top: 68px;
+      }
     
       .hero-content {
         max-width: 100%;
