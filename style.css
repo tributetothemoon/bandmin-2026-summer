@@ -97,7 +97,7 @@ nav {
     /* title이미지 — hero-top 안에서 flow 배치 */
     .hero-title-img {
       position: absolute;
-      top: 12%;
+      top: 8%;
       left: 50%;
       transform: translateX(-50%);
       width: min(85%, 520px);
@@ -128,7 +128,7 @@ nav {
       max-width: 760px; width: 100%;
     }
     .hero-img-spacer {
-      height: clamp(260px, 52vw, 480px);   /* hero-hero-img 높이에 맞게 조정 */
+      height: clamp(240px, 48vw, 460px);   /* hero-hero-img 높이에 맞게 조정 */
     }
     /* tag + title이미지 묶음 */
     .hero-top {
@@ -146,6 +146,7 @@ nav {
       border: 1px solid rgba(245,108,168,.35);
       padding: .3rem .9rem; border-radius: 20px;
       margin-bottom: .6rem;   /* title이미지와 바짝 붙게 */
+      margin-top: .5rem;
       width: fit-content;
       animation: fadeUp .8s ease both;
     }
@@ -604,19 +605,55 @@ nav {
     /* ── Responsive ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      #hero { padding: 6rem 1.2rem 3.5rem; }
-      .hero-content { max-width: 100%; }
-      .hero-bg-img, .hero-overlay { width: 90%; }
+    
+      #hero {
+        padding: 6rem 1.2rem 3.5rem;
+        align-items: center;
+        justify-content: center;
+      }
+    
+      .hero-content {
+        max-width: 100%;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    
+      /* 배경은 전체 너비로 */
+      .hero-bg-img { width: 100%; }
+      .hero-overlay {
+        width: 100%;
+        left: 0;
+        transform: none;
+      }
+    
+      /* 이미지들 모바일 크기/위치 */
+      .hero-title-img {
+        top: 10%;
+        width: min(90%, 360px);
+      }
+    
+      .hero-hero-img {
+        top: 18%;
+        width: min(90%, 360px);
+      }
+    
+      .hero-img-spacer {
+        height: clamp(220px, 85vw, 380px);
+      }
+    
+      .hero-bands {
+        justify-content: center;
+      }
+    
       .venue-grid { grid-template-columns: 1fr; }
       .bands-grid { grid-template-columns: 1fr 1fr; }
-      
     }
     @media (max-width: 480px) {
       .bands-grid { grid-template-columns: repeat(2, 1fr); gap: .7rem; }
       .band-name { font-size: .9rem; }
       .band-info { padding: .7rem .8rem .8rem; }
       .hero-title { font-size: 2.6rem; }
-      .hero-bg-img, .hero-overlay { width: 90%; }
     }
 
     /* ── Reveal ── */
