@@ -168,7 +168,7 @@ nav {
     /* title이미지 — hero-top 안에서 flow 배치 */
     .hero-title-img {
       position: absolute;
-      top: 10%;
+      top: 8%;
       left: 50%;
       transform: translateX(-50%);
       width: min(85%, 520px);
@@ -683,19 +683,16 @@ nav {
     /* ── Responsive ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-    
-    #hero {
-      padding: 6rem 1.2rem 5rem;
-    }
-      .hero-tag {
-        top: 74px;
-      }
-    
-      .hero-content {
-        max-width: 100%;
-        align-items: center;
-        text-align: center;
-      }
+      
+      #hero { padding: 6rem 1.2rem 5rem; }
+      
+      .hero-tag { top: 74px; }
+        
+          .hero-content {
+            max-width: 100%;
+            align-items: center;
+            text-align: center;
+          }
 
       /* 배경은 전체 너비로 */
       .hero-bg-img { width: 100%; }
@@ -707,7 +704,7 @@ nav {
     
       /* 이미지들 모바일 크기/위치 */
       .hero-title-img {
-        top: 11%;
+        top: 10%;
         width: min(85%, 360px);
       }
     
