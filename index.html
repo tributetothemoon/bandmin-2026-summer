@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>열대야:260627 연합공연</title>
+  <title>밴드의민족 2026 여름 정기공연</title>
+  <meta name="description" content="2026년 7월 25일 18:00 펄스라이브홀 밴드의민족 여름 정기공연" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <!-- Pretendard via CDN (variable font) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="static/style.css?v=3">
 
     <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8G5DR8R8KF"></script>
@@ -23,15 +24,15 @@
 
     <!-- Open Graph / 공유 썸네일 -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="열대야 260627 연합공연" />
-  <meta property="og:description" content="2026년 6월 27일 5PM 펄스라이브홀 무료 연합 공연" />
-  <meta property="og:image" content="https://thimxokeit.github.io/tropical-night/tropical_night_thumbnail.png" />
-  <meta property="og:url" content="https://thimxokeit.github.io/tropical-night/" />
+  <meta property="og:title" content="밴드의민족 2026 여름 정기공연" />
+  <meta property="og:description" content="2026년 7월 25일 18:00 펄스라이브홀 밴드의민족 여름 정기공연" />
+  <meta property="og:image" content="https://tributetothemoon.github.io/bandmin-2026-summer/static/poster.png" />
+  <meta property="og:url" content="https://tributetothemoon.github.io/bandmin-2026-summer/" />
   <meta property="og:locale" content="ko_KR" />
-  
+
   <!-- Twitter Card (X에서 공유 시) -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://thimxokeit.github.io/tropical-night/tropical_night_thumbnail.png" />
+  <meta name="twitter:image" content="https://tributetothemoon.github.io/bandmin-2026-summer/static/poster.png" />
    
 </head>
 <body>
@@ -39,7 +40,8 @@
   <!-- Nav -->
   <nav>
     <a href="#hero" class="nav-logo" id="nav-logo">
-      <img src="tropical_poster_title.png" alt="열대야" />
+      <!-- [디자이너용] 로고 이미지 준비 시 아래 텍스트를 <img src="static/logo.png" alt="밴드의민족" /> 로 교체 -->
+      <span class="nav-logo-text">밴드의민족</span>
     </a>
   
     <div class="nav-links">
@@ -71,26 +73,18 @@
 
   <!-- Hero -->
  <section id="hero">
-  <img src="tropical_poster_bg.png" alt="" class="hero-bg-img" />
-  <div class="hero-tag">Live Concert · Free Entry</div>
-  <img src="tropical_poster_title.png" alt="" class="hero-title-img" />
-  <img src="tropical_poster_hero.png" alt="" class="hero-hero-img" />
-  <div class="hero-overlay"></div>
-
+  <!-- [디자이너용] 히어로 3레이어(제목/전경/배경) 재적용 슬롯:
+       ① 배경: <img src="static/hero_bg.png" alt="" class="hero-bg-img" /> 를 여기에 추가하고 static/style.css의 #hero 그라데이션 배경을 제거
+       ② 제목: 아래 .hero-title-text 텍스트를 <img src="static/hero_title.png" alt="" class="hero-title-img" /> 로 교체
+       ③ 전경: 아래 .hero-poster 의 src(static/poster.png)를 전경 전용 이미지(static/hero_foreground.png)로 교체
+       필요 시 <div class="hero-overlay"></div> 도 다시 추가 (관련 CSS 규칙은 style.css에 보존되어 있음) -->
   <div class="hero-content">
-    <div class="hero-img-spacer"></div>
-    
+    <div class="hero-tag">Live Concert · Free Entry</div>
+    <h1 class="hero-title-text">밴드의민족<br><span class="hero-title-year">2026 여름 정기공연</span></h1>
+    <img src="static/poster.png" alt="밴드의민족 2026 여름 정기공연 포스터" class="hero-poster" />
 
-    <p class="hero-date">26.06.27 (SAT) 5PM</p>
+    <p class="hero-date">26.07.25 (SAT) 6PM</p>
     <p class="hero-venue">펄스라이브홀</p>
-
-      <div class="hero-bands">
-        <span class="hero-band-chip">holywater</span>
-        <span class="hero-band-chip">ㅊㅁㄷㅁ</span>
-        <span class="hero-band-chip">Downdog</span>
-        <span class="hero-band-chip">경쟁대응</span>
-        <span class="hero-band-chip">예랑도랑</span>
-      </div>
 
       <!-- Countdown -->
       <div class="countdown" id="countdown">
@@ -113,11 +107,11 @@
   <section id="intro">
     <div class="section-inner">
       <p class="section-label reveal">About</p>
-      <h2 class="section-title reveal">열대야를 잠시<br>잊게할 공연🎸</b></h2>
+      <h2 class="section-title reveal">무더위를 날려버릴<br>여름 정기공연 🎸</h2>
       <div class="divider reveal"></div>
       <p class="intro-body reveal">
-      6월의 마지막 주 토요일,<br>
-        <strong>holywater, ㅊㅁㄷㅁ, Downdog, 경쟁대응, 예랑도랑</strong>과 함께 즐겨요!<br>
+      7월의 마지막 주 토요일,<br>
+        <strong>밴드의민족</strong> 팀들과 함께 즐겨요!<br>
       </p>
     </div>
   </section>
@@ -128,44 +122,62 @@
       <p class="section-label reveal">Line-up</p>
       <h2 class="section-title reveal">참여 밴드</h2>
       <div class="divider reveal"></div>
+      <!-- 참가팀 7팀 (이름 미정). 팀 확정 시 .band-img(이미지 또는 텍스트)와 .band-name 채우고,
+           SNS는 카드의 data-instagram / data-youtube 속성에 URL 입력 (JS가 자동으로 링크 렌더) -->
       <div class="bands-grid">
 
         <div class="band-card reveal" data-instagram="" data-youtube="">
-          <div class="band-img">holywater</div>
+          <div class="band-img"></div>
           <div class="band-info">
-            <div class="band-name">holywater</div>
+            <div class="band-name">TBA</div>
             <div class="band-links"></div>
           </div>
         </div>
 
         <div class="band-card reveal" data-instagram="" data-youtube="">
-          <div class="band-img">ㅊㅁㄷㅁ</div>
+          <div class="band-img"></div>
           <div class="band-info">
-            <div class="band-name">ㅊㅁㄷㅁ</div>
+            <div class="band-name">TBA</div>
             <div class="band-links"></div>
           </div>
         </div>
 
         <div class="band-card reveal" data-instagram="" data-youtube="">
-          <div class="band-img">Downdog</div>
+          <div class="band-img"></div>
           <div class="band-info">
-            <div class="band-name">Downdog</div>
+            <div class="band-name">TBA</div>
             <div class="band-links"></div>
           </div>
         </div>
 
         <div class="band-card reveal" data-instagram="" data-youtube="">
-          <div class="band-img"><img src="competition.jpeg" alt="경쟁대응" /></div>
+          <div class="band-img"></div>
           <div class="band-info">
-            <div class="band-name">경쟁대응</div>
+            <div class="band-name">TBA</div>
             <div class="band-links"></div>
           </div>
         </div>
 
-        <div class="band-card reveal" data-instagram="https://www.instagram.com/yerangnarangtheband?igsh=MWlnMDA0MjY5cW0wcA%3D%3D&utm_source=qr" data-youtube="https://youtube.com/@yerangnarang?si=H9IEM2qs0jiUFg65">
-          <div class="band-img"><img src="yerangnarang.png" alt="예랑도랑" /></div>
+        <div class="band-card reveal" data-instagram="" data-youtube="">
+          <div class="band-img"></div>
           <div class="band-info">
-            <div class="band-name">예랑도랑</div>
+            <div class="band-name">TBA</div>
+            <div class="band-links"></div>
+          </div>
+        </div>
+
+        <div class="band-card reveal" data-instagram="" data-youtube="">
+          <div class="band-img"></div>
+          <div class="band-info">
+            <div class="band-name">TBA</div>
+            <div class="band-links"></div>
+          </div>
+        </div>
+
+        <div class="band-card reveal" data-instagram="" data-youtube="">
+          <div class="band-img"></div>
+          <div class="band-info">
+            <div class="band-name">TBA</div>
             <div class="band-links"></div>
           </div>
         </div>
@@ -182,104 +194,107 @@
       <div class="divider reveal"></div>
       <div class="tt-list">
 
+        <!-- 참가팀 7팀 (이름·개별 시간·셋리스트 미정).
+             확정 시 각 그룹의 .tt-time(시간), .tt-act(팀명), .setlist-songs(곡 목록)를 채우면 됨.
+             곡 li 형식: <li class="song-item"><span class="song-no">1</span><span class="song-title">곡명</span><span class="song-artist">아티스트</span></li> -->
         <div class="tt-row special reveal">
-          <span class="tt-time">16:45</span>
+          <span class="tt-time">17:45</span>
           <span class="tt-act">OPEN <span class="tt-badge">입장</span></span>
         </div>
 
         <div class="tt-group reveal">
           <button class="tt-row tt-toggle" type="button" aria-expanded="false">
-            <span class="tt-time">17:00</span>
-            <span class="tt-act">holywater</span>
+            <span class="tt-time">18:00</span>
+            <span class="tt-act">TBA</span>
             <span class="tt-chevron" aria-hidden="true">+</span>
           </button>
           <div class="setlist">
             <ol class="setlist-songs">
-              <li class="song-item"><span class="song-no">1</span><span class="song-title">Some Like It Hot</span><span class="song-artist">SPYAIR</span></li>
-              <li class="song-item"><span class="song-no">2</span><span class="song-title">날 막지마</span><span class="song-artist">전영호</span></li>
-              <li class="song-item"><span class="song-no">3</span><span class="song-title">DAN DAN</span><span class="song-artist">ZARD</span></li>
-              <li class="song-item"><span class="song-no">4</span><span class="song-title">Sparkle</span><span class="song-artist">Radwimps</span></li>
-              <li class="song-item"><span class="song-no">5</span><span class="song-title">Butterfly</span><span class="song-artist">전영호</span></li>
-              <li class="song-item"><span class="song-no">6</span><span class="song-title">혜성</span><span class="song-artist">윤하</span></li>
-              <li class="song-item"><span class="song-no">7</span><span class="song-title">그대에게</span><span class="song-artist">신해철</span></li>
+              <li class="song-item"><span class="song-title">셋리스트 준비중</span></li>
             </ol>
           </div>
         </div>
 
         <div class="tt-group reveal">
           <button class="tt-row tt-toggle" type="button" aria-expanded="false">
-            <span class="tt-time">17:35</span>
-            <span class="tt-act">ㅊㅁㄷㅁ</span>
+            <span class="tt-time">TBD</span>
+            <span class="tt-act">TBA</span>
             <span class="tt-chevron" aria-hidden="true">+</span>
           </button>
           <div class="setlist">
             <ol class="setlist-songs">
-              <li class="song-item"><span class="song-no">1</span><span class="song-title">Champagne Supernova</span><span class="song-artist">Oasis</span></li>
-              <li class="song-item"><span class="song-no">2</span><span class="song-title">항복</span><span class="song-artist">윤마치</span></li>
-              <li class="song-item"><span class="song-no">3</span><span class="song-title">내일에서 온 티켓</span><span class="song-artist">한로로</span></li>
-              <li class="song-item"><span class="song-no">4</span><span class="song-title">새벽별</span><span class="song-artist">터치드</span></li>
-              <li class="song-item"><span class="song-no">5</span><span class="song-title">Shout Baby</span><span class="song-artist">녹황색사회</span></li>
-              <li class="song-item"><span class="song-no">6</span><span class="song-title">우리의 밤</span><span class="song-artist">유다빈밴드</span></li>
+              <li class="song-item"><span class="song-title">셋리스트 준비중</span></li>
             </ol>
           </div>
         </div>
 
         <div class="tt-group reveal">
           <button class="tt-row tt-toggle" type="button" aria-expanded="false">
-            <span class="tt-time">18:10</span>
-            <span class="tt-act">Downdog</span>
+            <span class="tt-time">TBD</span>
+            <span class="tt-act">TBA</span>
             <span class="tt-chevron" aria-hidden="true">+</span>
           </button>
           <div class="setlist">
             <ol class="setlist-songs">
-              <li class="song-item"><span class="song-no">1</span><span class="song-title">17171771</span><span class="song-artist">자우림</span></li>
-              <li class="song-item"><span class="song-no">2</span><span class="song-title">Drowning</span><span class="song-artist">Woodz</span></li>
-              <li class="song-item"><span class="song-no">3</span><span class="song-title">No Roots</span><span class="song-artist">Alice Merton</span></li>
-              <li class="song-item"><span class="song-no">4</span><span class="song-title">미안해, 널 미워해</span><span class="song-artist">자우림</span></li>
-              <li class="song-item"><span class="song-no">5</span><span class="song-title">Last Day</span><span class="song-artist">터치드</span></li>
-              <li class="song-item"><span class="song-no">6</span><span class="song-title">시퍼런 봄</span><span class="song-artist">쏜애플</span></li>
+              <li class="song-item"><span class="song-title">셋리스트 준비중</span></li>
             </ol>
           </div>
         </div>
 
         <div class="tt-group reveal">
           <button class="tt-row tt-toggle" type="button" aria-expanded="false">
-            <span class="tt-time">18:45</span>
-            <span class="tt-act">경쟁대응</span>
+            <span class="tt-time">TBD</span>
+            <span class="tt-act">TBA</span>
             <span class="tt-chevron" aria-hidden="true">+</span>
           </button>
           <div class="setlist">
             <ol class="setlist-songs">
-              <li class="song-item"><span class="song-no">1</span><span class="song-title">기생충</span><span class="song-artist">넬</span></li>
-              <li class="song-item"><span class="song-no">2</span><span class="song-title">한낮</span><span class="song-artist">쏜애플</span></li>
-              <li class="song-item"><span class="song-no">3</span><span class="song-title">Time-Bomb</span><span class="song-artist">All Time Low</span></li>
-              <li class="song-item"><span class="song-no">4</span><span class="song-title">Dead!</span><span class="song-artist">My Chemical Romance</span></li>
-              <li class="song-item"><span class="song-no">5</span><span class="song-title">Way Away</span><span class="song-artist">Yellowcard</span></li>
-              <li class="song-item"><span class="song-no">6</span><span class="song-title">Poker Face</span><span class="song-artist">브로큰발렌타인</span></li>
+              <li class="song-item"><span class="song-title">셋리스트 준비중</span></li>
             </ol>
           </div>
         </div>
 
         <div class="tt-group reveal">
           <button class="tt-row tt-toggle" type="button" aria-expanded="false">
-            <span class="tt-time">19:20</span>
-            <span class="tt-act">예랑도랑</span>
+            <span class="tt-time">TBD</span>
+            <span class="tt-act">TBA</span>
             <span class="tt-chevron" aria-hidden="true">+</span>
           </button>
           <div class="setlist">
             <ol class="setlist-songs">
-              <li class="song-item"><span class="song-no">1</span><span class="song-title">Overdrive</span><span class="song-artist">투어스 (TWS)</span></li>
-              <li class="song-item"><span class="song-no">2</span><span class="song-title">Pretender</span><span class="song-artist">Official髭男dism</span></li>
-              <li class="song-item"><span class="song-no">3</span><span class="song-title">사랑하게 될 거야</span><span class="song-artist">한로로</span></li>
-              <li class="song-item"><span class="song-no">4</span><span class="song-title">눈물참기</span><span class="song-artist">QWER</span></li>
-              <li class="song-item"><span class="song-no">5</span><span class="song-title">Sub Character</span><span class="song-artist">윤하</span></li>
-              <li class="song-item"><span class="song-no">6</span><span class="song-title">Bye Summer</span><span class="song-artist">아이유</span></li>
+              <li class="song-item"><span class="song-title">셋리스트 준비중</span></li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="tt-group reveal">
+          <button class="tt-row tt-toggle" type="button" aria-expanded="false">
+            <span class="tt-time">TBD</span>
+            <span class="tt-act">TBA</span>
+            <span class="tt-chevron" aria-hidden="true">+</span>
+          </button>
+          <div class="setlist">
+            <ol class="setlist-songs">
+              <li class="song-item"><span class="song-title">셋리스트 준비중</span></li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="tt-group reveal">
+          <button class="tt-row tt-toggle" type="button" aria-expanded="false">
+            <span class="tt-time">TBD</span>
+            <span class="tt-act">TBA</span>
+            <span class="tt-chevron" aria-hidden="true">+</span>
+          </button>
+          <div class="setlist">
+            <ol class="setlist-songs">
+              <li class="song-item"><span class="song-title">셋리스트 준비중</span></li>
             </ol>
           </div>
         </div>
 
         <div class="tt-row special reveal">
-          <span class="tt-time">20:00</span>
+          <span class="tt-time">TBD</span>
           <span class="tt-act">END</span>
         </div>
 
@@ -359,7 +374,7 @@
           <button class="faq-q" onclick="toggleFaq(this)">
             입장 가능 시간은 언제인가요?<span class="faq-icon">+</span>
           </button>
-          <div class="faq-a">16:45부터 입장 가능합니다.</div>
+          <div class="faq-a">17:45부터 입장 가능합니다.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">
@@ -389,14 +404,14 @@
   <!-- Free Entry CTA -->
   <section id="ticket">
 
-    <img src="tropical_poster_title.png" alt="" class="ticket-postertext-bg" />
-    <!-- <div class="ticket-postertext-bg ph">열대야</div> -->
+    <!-- [디자이너용] 제목 이미지 준비 시 아래 텍스트 워터마크를 <img src="static/hero_title.png" alt="" class="ticket-postertext-bg" /> 로 교체 -->
+    <div class="ticket-postertext-bg ph">밴드의민족</div>
 
     <div class="section-inner ticket-inner" style="text-align:center; padding: 8rem 2rem;">
       <p class="section-label" style="color:rgba(255,244,221,.5); display:flex; justify-content:center; margin-bottom:1.2rem;">Entry</p>
       <h2 class="ticket-title">무료 입장</h2>
       <p class="ticket-sub" style="font-size:1.1rem; margin-bottom:.5rem;">무료 입장 자율 퇴장</p>
-      <p class="ticket-sub">26.06.27 (SAT) &nbsp;·&nbsp; 펄스라이브홀 &nbsp;·&nbsp; 16:45 OPEN</p>
+      <p class="ticket-sub">26.07.25 (SAT) &nbsp;·&nbsp; 펄스라이브홀 &nbsp;·&nbsp; 17:45 OPEN</p>
       <div style="margin-top:2.2rem; display:inline-block; padding: .9rem 2.2rem;
                   border: 1px solid rgba(255,244,221,.35); border-radius:4px;">
         <span style="font-size:.8rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--cream);">
@@ -417,9 +432,10 @@
         아래 QR과 계좌번호를 통해 후원할 수 있어요❤️‍🔥
       </p>
       <div class="reveal" style="display:inline-flex; flex-direction:column; align-items:center; gap:1rem;">
+        <!-- [준비중] 후원 QR 확정 시 아래 박스를 <img src="static/qr.png" alt="후원 QR 코드" style="width:176px;height:176px;display:block;image-rendering:pixelated;" /> 로 교체 -->
         <div style="background:var(--cream); padding:.9rem; border-radius:10px; display:inline-block;">
-          <img src="qr.png" alt="후원 QR 코드"
-               style="width:176px; height:176px; display:block; image-rendering:pixelated;" />
+          <div style="width:176px; height:176px; display:flex; align-items:center; justify-content:center;
+                      color:rgba(8,28,90,.45); font-size:.8rem; font-weight:600;">QR 준비중</div>
         </div>
         <button id="copy-account-btn" class="donation-btn">
           계좌번호 복사하기
@@ -432,8 +448,9 @@
         
         <script>
         document.getElementById('copy-account-btn').addEventListener('click', async () => {
-          const text = '토스뱅크 1002-2528-3603 예랑나랑';
-        
+          // TODO: 후원 계좌 확정 시 아래 문자열 교체 (예: '토스뱅크 000-0000-0000 예금주')
+          const text = '계좌번호 준비중';
+
           try {
             await navigator.clipboard.writeText(text);
         
@@ -479,25 +496,15 @@
       <h2 class="section-title reveal">공연 곡 미리 듣기</h2>
       <div class="divider reveal"></div>
       <div class="reveal" style="max-width:720px; margin:0 auto;">
-        <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:10px; overflow:hidden; border:1px solid rgba(255,244,221,.1);">
-          <iframe
-            src="https://www.youtube.com/embed/videoseries?list=PLz7A8w3UfmiwxfO8-nf10tNUv42ojxV--"
-            title="열대야 플레이리스트"
-            style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <div style="margin-top:1rem; text-align:center;">
-          <a href="https://youtube.com/playlist?list=PLz7A8w3UfmiwxfO8-nf10tNUv42ojxV--"
-             target="_blank" rel="noopener"
-             style="font-size:.7rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
-                    color:rgba(255,244,221,.45); border:1px solid rgba(255,244,221,.18); padding:.4rem 1rem;
-                    border-radius:3px; display:inline-block; transition:color .15s, border-color .15s;"
-             onmouseover="this.style.color='#F56CA8';this.style.borderColor='#F56CA8'"
-             onmouseout="this.style.color='rgba(255,244,221,.45)';this.style.borderColor='rgba(255,244,221,.18)'">
-            ▶ YouTube에서 열기
-          </a>
+        <!-- [준비중] 플레이리스트 확정 시 아래 박스를 YouTube iframe으로 교체:
+             <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:10px; overflow:hidden; border:1px solid rgba(255,244,221,.1);">
+               <iframe src="https://www.youtube.com/embed/videoseries?list=플레이리스트ID" title="밴드의민족 플레이리스트"
+                 style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
+                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+             </div> -->
+        <div style="padding-bottom:56.25%; position:relative; border-radius:10px; border:1px solid rgba(255,244,221,.1);">
+          <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+                      color:rgba(255,244,221,.4); font-size:.85rem; font-weight:600;">플레이리스트 준비중</div>
         </div>
       </div>
     </div>
@@ -505,8 +512,8 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-logo">열대야</div>
-    <p class="footer-sub">© 2026 열대야 · 여름날의 라이브 · 펄스라이브홀</p>
+    <div class="footer-logo">밴드의민족</div>
+    <p class="footer-sub">© 2026 밴드의민족 · 여름 정기공연 · 펄스라이브홀</p>
     <!-- Floating Donation Button -->
     <a href="#support" class="floating-support">
       🍨 응원하기
@@ -524,14 +531,14 @@
       const yt = card.dataset.youtube;
       const container = card.querySelector('.band-links');
       if (ig) container.insertAdjacentHTML('beforeend',
-        `<a href="${ig}" target="_blank" rel="noopener" class="band-link" aria-label="Instagram"><img src="instagram.png" alt="Instagram"></a>`);
+        `<a href="${ig}" target="_blank" rel="noopener" class="band-link" aria-label="Instagram"><img src="static/instagram.png" alt="Instagram"></a>`);
       if (yt) container.insertAdjacentHTML('beforeend',
-        `<a href="${yt}" target="_blank" rel="noopener" class="band-link" aria-label="YouTube"><img src="youtube.png" alt="YouTube"></a>`);
+        `<a href="${yt}" target="_blank" rel="noopener" class="band-link" aria-label="YouTube"><img src="static/youtube.png" alt="YouTube"></a>`);
       if (!ig && !yt) container.remove();
     });
 
-    // ── Countdown ── 26.06.27 17:00 KST
-    const concertDate = new Date('2026-06-27T17:00:00+09:00');
+    // ── Countdown ── 26.07.25 18:00 KST
+    const concertDate = new Date('2026-07-25T18:00:00+09:00');
     function updateCountdown() {
       const diff = concertDate - new Date();
       if (diff <= 0) {

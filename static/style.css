@@ -137,6 +137,42 @@ nav {
       justify-content: center;
       overflow: hidden;
       padding: 5rem 1.5rem 4.5rem;
+      /* 포스터 톤에 맞춘 검정→회색 그라데이션 배경.
+         [디자이너용] .hero-bg-img 이미지 배경을 다시 쓸 경우 이 background 선언을 제거하면 됨. */
+      background: radial-gradient(120% 90% at 50% 0%, #2a2a2a 0%, #141414 45%, #000 100%);
+    }
+
+    /* 텍스트 제목 (디자이너 제목 이미지 준비 전 임시) */
+    .hero-title-text {
+      position: relative; z-index: 4;
+      font-weight: 900;
+      font-size: clamp(2.4rem, 7vw, 4.2rem);
+      line-height: 1.05; letter-spacing: -.03em;
+      color: var(--cream);
+      text-align: center;
+      margin-bottom: 1.6rem;
+      animation: fadeUp .85s .05s ease both;
+    }
+    .hero-title-year {
+      display: inline-block;
+      font-size: clamp(1rem, 2.6vw, 1.5rem);
+      font-weight: 700; letter-spacing: -.01em;
+      color: rgba(255,244,221,.6);
+      margin-top: .4rem;
+    }
+    /* 포스터 이미지 (히어로 중앙) */
+    .hero-poster {
+      position: relative; z-index: 4;
+      display: block;
+      width: min(78%, 340px);
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.55);
+      animation: fadeUp .9s .12s ease both;
+    }
+    .nav-logo-text {
+      font-weight: 900; font-size: 1.05rem; letter-spacing: -.02em;
+      color: var(--cream);
     }
 
     /* 전체 배경 이미지 */
@@ -209,11 +245,8 @@ nav {
       margin-bottom: 0;
     }
     .hero-tag {
-      position: absolute;
-      top: 88px;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
+      position: relative;
+      margin: 0 auto 1.4rem;
       z-index: 5;
       display: inline-flex; align-items: center; gap: .5rem;
       font-size: .68rem; font-weight: 600;
@@ -619,12 +652,13 @@ nav {
     /* 텍스트 placeholder 버전 (이미지 없을 때) */
     .ticket-postertext-bg.ph {
       font-weight: 900;
-      font-size: 24vw;
+      font-size: 15vw;
       line-height: 1;
       letter-spacing: -.05em;
       color: var(--cream);
       white-space: nowrap;
       text-align: center;
+      opacity: .12;
     }
     .ticket-title {
       font-weight: 900; font-size: clamp(2.5rem, 7vw, 5rem);
