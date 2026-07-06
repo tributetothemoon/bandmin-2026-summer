@@ -137,36 +137,24 @@ nav {
       justify-content: center;
       overflow: hidden;
       padding: 5rem 1.5rem 4.5rem;
-      /* 포스터 톤에 맞춘 검정→회색 그라데이션 배경.
-         [디자이너용] .hero-bg-img 이미지 배경을 다시 쓸 경우 이 background 선언을 제거하면 됨. */
+      /* 포스터 프레임(.hero-poster-frame) 바깥 여백에도 같은 톤이 이어지도록 hero_bg.png와 동일한 그라데이션 값을 사용 */
       background: radial-gradient(120% 90% at 50% 0%, #2a2a2a 0%, #141414 45%, #000 100%);
     }
 
-    /* 텍스트 제목 (디자이너 제목 이미지 준비 전 임시) */
-    .hero-title-text {
-      position: relative; z-index: 4;
-      font-weight: 900;
-      font-size: clamp(2.4rem, 7vw, 4.2rem);
-      line-height: 1.05; letter-spacing: -.03em;
-      color: var(--cream);
-      text-align: center;
-      margin-bottom: 1.6rem;
-      animation: fadeUp .85s .05s ease both;
-    }
     .hero-title-year {
       display: inline-block;
       font-size: clamp(1rem, 2.6vw, 1.5rem);
       font-weight: 700; letter-spacing: -.01em;
       color: rgba(255,244,221,.6);
-      margin-top: .4rem;
+      margin-top: 1.4rem;
     }
-    /* 포스터 이미지 (히어로 중앙) */
-    .hero-poster {
+    /* 3레이어 합성 포스터 프레임 (배경/제목/전경 이미지를 겹쳐서 하나의 포스터처럼 보이게 함) */
+    .hero-poster-frame {
       position: relative; z-index: 4;
-      display: block;
       width: min(78%, 340px);
-      height: auto;
+      aspect-ratio: 1024 / 1144;
       border-radius: 12px;
+      overflow: hidden;
       box-shadow: 0 20px 60px rgba(0,0,0,.55);
       animation: fadeUp .9s .12s ease both;
     }
@@ -175,9 +163,8 @@ nav {
       color: var(--cream);
     }
 
-    /* 전체 배경 이미지 */
-    /* BG: 그라데이션 배경 이미지 — 전체 꽉 채움 */
-    .hero-bg-img {
+    /* BG 레이어 — 프레임 전체를 채움 */
+    .hero-poster-frame .hero-bg-img {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -187,42 +174,25 @@ nav {
       display: block;
       z-index: 0;
     }
-    
-    /* Hero: 아이스크림 이미지 — 하단 중앙 */
-    /* 아이스크림 이미지 — flow 안에 배치 */
-    .hero-hero-img {
+    /* 제목 레이어 — 프레임 상단 */
+    .hero-poster-frame .hero-title-img {
       position: absolute;
-      top: 16%;
+      top: 6%;
       left: 50%;
       transform: translateX(-50%);
-      width: min(65%, 400px);
+      width: 80%;
+      z-index: 2;
+      pointer-events: none;
+    }
+    /* 전경 레이어 — 아이스크림/스틱 (메인 포스터에서 추출) */
+    .hero-poster-frame .hero-hero-img {
+      position: absolute;
+      top: 22%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
       z-index: 1;
       pointer-events: none;
-    }
-    
-    /* title이미지 — hero-top 안에서 flow 배치 */
-    .hero-title-img {
-      position: absolute;
-      top: 8%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(85%, 520px);
-      z-index: 0;
-      pointer-events: none;
-    }
-    /* 그라데이션 오버레이: 하단 페이드 */
-    .hero-overlay {
-      position: absolute; inset: 0; z-index: 3;
-      pointer-events: none;
-      background:
-        /* 좌우 가장자리 페이드 */
-        linear-gradient(to right, var(--navy) 0%, transparent 18%, transparent 82%, var(--navy) 100%),
-        /* 상하 페이드 */
-        linear-gradient(to bottom,
-          rgba(14,13,12,0)   0%,
-          rgba(14,13,12,0)   45%,
-          rgba(14,13,12,.70) 80%,
-          rgba(14,13,12,.95) 100%);
     }
 
     /* 정보 블록 (배경 위 중앙정렬) */
@@ -232,9 +202,6 @@ nav {
       align-items: center;
       text-align: center;
       max-width: 760px; width: 100%;
-    }
-    .hero-img-spacer {
-      height: clamp(320px, 105vw, 480px);
     }
     /* tag + title이미지 묶음 */
     .hero-top {
@@ -727,29 +694,6 @@ nav {
             text-align: center;
           }
 
-      /* 배경은 전체 너비로 */
-      .hero-bg-img { width: 100%; }
-      .hero-overlay {
-        width: 100%;
-        left: 0;
-        transform: none;
-      }
-    
-      /* 이미지들 모바일 크기/위치 */
-      .hero-title-img {
-        top: 10%;
-        width: min(85%, 360px);
-      }
-    
-      .hero-hero-img {
-        top: 18%;
-        width: min(60%, 280px);
-      }
-    
-      .hero-img-spacer {
-        height: clamp(220px, 85vw, 380px);
-      }
-    
       .hero-bands {
         justify-content: center;
       }
