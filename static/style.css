@@ -1,11 +1,11 @@
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --blue:    #0D39D9;
-  --pink:    #F56CA8;
+  --blue:    #C9A968;
+  --pink:    #E8CE96;
   --cream:   #FFF4DD;
-  --navy:    #081C5A;
-  --navy2:   #0a2268;
+  --navy:    #0e0d0c;
+  --navy2:   #1c1a17;
   --font-kr: 'Pretendard Variable', 'Pretendard', -apple-system, sans-serif;
   --font-mono: 'Space Mono', monospace;
 }
@@ -33,8 +33,8 @@ nav {
   padding: 1rem 2rem;
   -webkit-backdrop-filter: blur(14px); 
   backdrop-filter: blur(14px);
-  background: rgba(8,28,90,.72);
-      border-bottom: 1px solid rgba(245,108,168,.15);
+  background: rgba(14,13,12,.72);
+      border-bottom: 1px solid rgba(232,206,150,.15);
     }
     .nav-logo {
       display: inline-flex;
@@ -98,9 +98,9 @@ nav {
       top: 57px; left: 0; right: 0;
       z-index: 99;
       flex-direction: column;
-      background: rgba(8,28,90,.97);
+      background: rgba(14,13,12,.97);
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(245,108,168,.15);
+      border-bottom: 1px solid rgba(232,206,150,.15);
       padding: 1rem 2rem 1.5rem;
       gap: .2rem;
     }
@@ -219,10 +219,10 @@ nav {
         linear-gradient(to right, var(--navy) 0%, transparent 18%, transparent 82%, var(--navy) 100%),
         /* 상하 페이드 */
         linear-gradient(to bottom,
-          rgba(8,28,90,0)   0%,
-          rgba(8,28,90,0)   45%,
-          rgba(8,28,90,.70) 80%,
-          rgba(8,28,90,.95) 100%);
+          rgba(14,13,12,0)   0%,
+          rgba(14,13,12,0)   45%,
+          rgba(14,13,12,.70) 80%,
+          rgba(14,13,12,.95) 100%);
     }
 
     /* 정보 블록 (배경 위 중앙정렬) */
@@ -252,7 +252,7 @@ nav {
       font-size: .68rem; font-weight: 600;
       letter-spacing: .18em; text-transform: uppercase;
       color: var(--pink);
-      border: 1px solid rgba(245,108,168,.35);
+      border: 1px solid rgba(232,206,150,.35);
       padding: .3rem .9rem; border-radius: 20px;
       width: fit-content;
       white-space: nowrap;
@@ -304,7 +304,7 @@ nav {
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-image: linear-gradient(to right, #FF84F6, #A59FF3, #FF84F6);
+      background-image: linear-gradient(to right, #F3D9A0, #C9A968, #F3D9A0);
     }
     
     .hero-band-chip::before {
@@ -313,7 +313,7 @@ nav {
       inset: 0;
       border-radius: 20px;
       padding: 1px;
-      background: linear-gradient(to right, #FF84F6, #A59FF3, #FF84F6);
+      background: linear-gradient(to right, #F3D9A0, #C9A968, #F3D9A0);
       -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
@@ -405,7 +405,7 @@ nav {
     @keyframes fadeUp { from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none} }
 
     /* ── Intro ── */
-    #intro { background: linear-gradient(to bottom, var(--navy), #0d2480); }
+    #intro { background: linear-gradient(to bottom, var(--navy), #1c1a17); }
     .intro-body {
       font-size: clamp(.95rem, 1.8vw, 1.1rem);
       line-height: 2; color: rgba(255,244,221,.7);
@@ -414,7 +414,7 @@ nav {
     .intro-body strong { color: var(--cream); font-weight: 700; }
 
     /* ── Bands ── */
-    #bands { background: #070f3a; }
+    #bands { background: #14120f; }
     .bands-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
@@ -428,8 +428,8 @@ nav {
     }
     .band-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(245,108,168,.3);
-      box-shadow: 0 12px 32px rgba(245,108,168,.1);
+      border-color: rgba(232,206,150,.3);
+      box-shadow: 0 12px 32px rgba(232,206,150,.1);
     }
     .band-img {
       width: 100%; aspect-ratio: 1/1;
@@ -475,12 +475,12 @@ nav {
     }
     .band-link:hover {
       border-color: var(--pink);
-      background: rgba(245,108,168,.12);
+      background: rgba(232,206,150,.12);
       transform: translateY(-1px);
     }
 
     /* ── Timetable ── */
-    #timetable { background: linear-gradient(to bottom, #070f3a, var(--navy)); }
+    #timetable { background: linear-gradient(to bottom, #14120f, var(--navy)); }
     #timetable .section-inner { text-align: center; }
     #timetable .divider { margin-left: auto; margin-right: auto; }
 
@@ -515,8 +515,8 @@ nav {
 
     /* OPEN / END 강조행 */
     .tt-row.special {
-      border-color: rgba(245,108,168,.25);
-      background: rgba(245,108,168,.05);
+      border-color: rgba(232,206,150,.25);
+      background: rgba(232,206,150,.05);
     }
 
     /* 밴드 토글 버튼 (FAQ 아코디언과 동일한 결) */
@@ -526,7 +526,7 @@ nav {
       cursor: pointer; appearance: none; -webkit-appearance: none;
       text-align: left;
     }
-    .tt-toggle:hover { background: rgba(245,108,168,.08); border-color: rgba(245,108,168,.22); }
+    .tt-toggle:hover { background: rgba(232,206,150,.08); border-color: rgba(232,206,150,.22); }
     .tt-chevron {
       font-family: var(--font-mono); font-size: 1.2rem; line-height: 1;
       color: var(--pink); justify-self: end;
@@ -535,8 +535,8 @@ nav {
 
     /* 열린 상태: 행과 셋리스트가 하나의 카드처럼 이어짐 */
     .tt-group.open .tt-toggle {
-      background: rgba(245,108,168,.12);
-      border-color: rgba(245,108,168,.3);
+      background: rgba(232,206,150,.12);
+      border-color: rgba(232,206,150,.3);
       border-bottom-color: transparent;
       border-bottom-left-radius: 0; border-bottom-right-radius: 0;
     }
@@ -552,8 +552,8 @@ nav {
     .tt-group.open .setlist {
       max-height: 700px;
       padding: .4rem 1.3rem .8rem;
-      background: rgba(245,108,168,.05);
-      border-color: rgba(245,108,168,.3);
+      background: rgba(232,206,150,.05);
+      border-color: rgba(232,206,150,.3);
     }
 
     .setlist-songs { list-style: none; margin: 0; padding: 0; }
@@ -567,7 +567,7 @@ nav {
     .song-item:last-child { border-bottom: none; }
     .song-no {
       font-family: var(--font-mono); font-size: .72rem;
-      color: rgba(245,108,168,.7);
+      color: rgba(232,206,150,.7);
     }
     .song-title { color: var(--cream); font-size: .9rem; font-weight: 600; letter-spacing: -.01em; }
     a.song-title { text-decoration: none; transition: color .15s; }
@@ -606,7 +606,7 @@ nav {
 
 
     /* ── FAQ ── */
-    #faq { background: #070f3a; }
+    #faq { background: #14120f; }
     .faq-list { max-width: 660px; display: flex; flex-direction: column; gap: .5rem; }
     .faq-item { border: 1px solid rgba(255,244,221,.08); border-radius: 8px; overflow: hidden; }
     .faq-q {
@@ -634,7 +634,7 @@ nav {
 
     /* ── Free Entry CTA ── */
     #ticket {
-      background: linear-gradient(135deg, #0D39D9 0%, #2a1a8a 40%, #6b1a5a 70%, #F56CA8 100%);
+      background: linear-gradient(135deg, #0e0d0c 0%, #2a2018 40%, #6b5233 70%, #E8CE96 100%);
       text-align: center; position: relative; overflow: hidden;
     }
     .ticket-inner { position: relative; z-index: 2; }
@@ -677,7 +677,7 @@ nav {
       letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--pink);
-      border: 1px solid rgba(245,108,168,.4);
+      border: 1px solid rgba(232,206,150,.4);
       padding: .55rem 1.4rem;
       border-radius: 3px;
       background: transparent;
@@ -686,22 +686,22 @@ nav {
     }
     
     .donation-btn:hover {
-      background: #F56CA8;
-      color: #081C5A;
+      background: #E8CE96;
+      color: #0e0d0c;
     }
 
     /* ── Support ── */
-    #support { background: linear-gradient(to bottom, var(--navy), #070f3a); }
+    #support { background: linear-gradient(to bottom, var(--navy), #14120f); }
 
     /* ── Playlist ── */
-    #playlist { background: #070f3a; }
+    #playlist { background: #14120f; }
     /* 중앙 정렬 */
     #playlist .section-inner { text-align: center; }
     #playlist .divider { margin-left: auto; margin-right: auto; }
 
     /* ── Footer ── */
     footer {
-      background: #030c2e;
+      background: #060504;
       text-align: center; padding: 3rem 2rem;
     }
     .footer-logo {
@@ -797,7 +797,7 @@ nav {
   font-weight: 800;
   letter-spacing: .03em;
 
-  box-shadow: 0 12px 34px rgba(245,108,168,.38);
+  box-shadow: 0 12px 34px rgba(232,206,150,.38);
   will-change: transform;
   transition: transform .15s ease,
               box-shadow .15s ease,
@@ -818,7 +818,7 @@ nav {
 .floating-support:hover {
   animation-play-state: paused;
   transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(245,108,168,.5);
+  box-shadow: 0 16px 40px rgba(232,206,150,.5);
 }
 
 @keyframes floatPulse {
