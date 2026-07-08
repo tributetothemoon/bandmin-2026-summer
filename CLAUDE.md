@@ -2,6 +2,10 @@
 
 이 파일은 이 저장소에서 작업할 때 Claude Code(claude.ai/code)에게 제공되는 안내 문서입니다.
 
+## 언어 선호
+
+한국어 선호
+
 ## 이 프로젝트는 무엇인가
 
 **밴드의민족 2026년 여름 정기공연**(밴드 쇼케이스 공연)을 위한 싱글 페이지 정적 사이트로, GitHub Pages(`https://tributetothemoon.github.io/bandmin-2026-summer/`)를 통해 호스팅됩니다. 별도의 빌드 시스템, 패키지 매니저, 테스트 스위트가 없습니다 — 순수 HTML/CSS와 약간의 인라인 JS로만 구성되어 있습니다.
