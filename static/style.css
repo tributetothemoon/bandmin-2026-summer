@@ -410,6 +410,10 @@ nav {
     .band-img img {
       width: 100%; height: 100%; object-fit: cover; display: block;
     }
+    /* 가로로 긴 사진(예: 스프린트)용 — 자르지 않고 가운데 맞춤, 남는 여백은 기존 그라데이션이 비쳐 보이도록 */
+    .band-img-contain img {
+      object-fit: contain;
+    }
     .band-info { padding: 1rem 1.1rem 1.1rem; }
     .band-name {
       font-weight: 800; font-size: 1.05rem;
@@ -540,6 +544,17 @@ nav {
     .song-title { color: var(--cream); font-size: .9rem; font-weight: 600; letter-spacing: -.01em; }
     a.song-title { text-decoration: none; transition: color .15s; }
     a.song-title:hover { color: var(--pink); text-decoration: underline; }
+    a.song-title::after {
+      content: '';
+      display: inline-block;
+      width: 14px; height: 14px;
+      margin-left: .4em;
+      vertical-align: -2px;
+      background: url('yt-play.svg') center / contain no-repeat;
+      opacity: .75;
+      transition: opacity .15s;
+    }
+    a.song-title:hover::after { opacity: 1; }
     .song-artist {
       color: rgba(255,244,221,.45); font-size: .76rem; font-weight: 500;
       justify-self: end; text-align: right;
