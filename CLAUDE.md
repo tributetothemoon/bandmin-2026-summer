@@ -29,7 +29,7 @@ python3 -m http.server 8777
 
 ## 페이지 구조 (`index.html`)
 
-섹션은 다음 순서로 각각 `<section id="...">`로 존재합니다: `hero` → `intro` → `bands` → `timetable` → `venue` → `faq` → `ticket`(무료입장 CTA) → `support`(후원) → `playlist` → `footer`. 내비게이션과 모바일 드로어는 이 id들(`#bands`, `#timetable` 등)에 직접 링크하므로, 섹션 id를 바꾸면 내비 링크도 함께 맞춰야 합니다.
+섹션은 다음 순서로 각각 `<section id="...">`로 존재합니다: `hero` → `intro` → `bands` → `timetable` → `venue` → `faq` → `ticket`(무료입장 CTA) → `support`(후원) → `footer`. 내비게이션과 모바일 드로어는 이 id들(`#bands`, `#timetable` 등)에 직접 링크하므로, 섹션 id를 바꾸면 내비 링크도 함께 맞춰야 합니다. 별도의 "미리듣기" 섹션은 없습니다 — 각 밴드 셋리스트 곡이 이미 유튜브 링크를 갖고 있어서, 관련 네비 링크는 모두 `#timetable`로 연결됩니다.
 
 **밴드 목록(`#bands`)과 타임테이블(`#timetable`)은 병렬 리스트**입니다 — 동일한 라인업이 두 곳에 반복되며 순서가 반드시 일치해야 합니다:
 - 밴드별 `.band-card`: `.band-img`(사진 `<img>` 또는 플레이스홀더 그라데이션을 위한 빈 값), `.band-name`, 선택적 `.band-desc`(멤버 명단, 예: `이름(V) · 이름(G)`), 카드 자체에 있는 `data-instagram` / `data-youtube` 속성.
@@ -39,9 +39,17 @@ python3 -m http.server 8777
 
 아직 확정되지 않은 밴드/셋리스트 슬롯은 생략하지 않고 `TBA`, `TBD`, `셋리스트 준비중` 같은 리터럴 플레이스홀더 텍스트를 사용해서, 그리드/타임테이블의 항목 수가 일정하게 유지되도록 합니다.
 
-## 히어로: 플레이스홀더 우선 설계
+## 히어로
 
-히어로는 `.hero-poster-frame` 안에 3개의 이미지 레이어(`.hero-bg-img` 배경, `.hero-title-img` 제목, `.hero-hero-img` 전경)를 절대 위치로 겹쳐서 하나의 포스터처럼 합성합니다. 지금 쓰이는 세 파일(`static/hero_bg.png`, `static/hero_title.png`, `static/hero_foreground.png`)은 전부 디자이너 최종본이 아니라 메인 포스터(`static/poster.png`)에서 뽑아낸/생성한 샘플입니다 — 배경은 CSS 그라데이션을 PNG로 구운 것, 제목은 시스템 폰트로 렌더링한 텍스트, 전경은 포스터에서 검정 배경을 지워 추출한 아이스크림+스틱입니다. 디자이너가 진짜 에셋을 주면 `<section id="hero">` 안의 주석대로 이 세 `src`만 갈아 끼우면 되고(마크업/CSS 구조는 그대로), `.hero-poster-frame`의 `aspect-ratio`(현재 포스터 원본 비율 1024/1144)만 최종 배경 이미지 비율에 맞게 조정하면 됩니다. 이 "지금은 플레이스홀더, 나중에 디자이너 에셋" 패턴은 다른 곳에도 있습니다(`.ticket-postertext-bg.ph` 텍스트 워터마크, "QR 준비중" / "플레이리스트 준비중" 박스) — 각각 무엇으로 교체해야 하는지 인라인 주석이 달려 있습니다.
+`<section id="hero">`는 `.hero-bg-img`(배경 포스터) 위에 `.hero-tag`/`.hero-overlay`/`.hero-content`(텍스트 블록)를 겹친 구조입니다. **배경 포스터는 데스크톱과 모바일에서 서로 다른 이미지**를 `<picture>`+`<source media>`로 골라 한 장만 로드합니다(둘 다 제목 없음):
+- 데스크톱(≥769px): 가로형(16:9) `static/hero_poster.jpg` — 원본 `poster_without_title.png`(3107×1747, 9.7MB)를 1600px JPEG로 압축.
+- 모바일(≤768px): 정방형(1:1) `static/hero_poster_square.jpg` — 원본 `poster_square.png`(2831×2831, 13MB)를 1200px JPEG로 압축.
+
+두 원본 PNG는 대용량이라 커밋하지 않고(`.gitignore`) 웹용 JPEG만 커밋합니다. 제목 있는 720×720 버전(`static/poster_with_title.png`)은 공유 썸네일(og:image/twitter:image) 전용입니다. 제목은 아직 임시로 텍스트(`.hero-title`, `nav-logo-text`와 동일한 굵기/자간)를 쓰고, 디자이너 제목 PNG(`static/hero_title.png`)가 나오면 `<section id="hero">` 안의 주석 처리된 `<img class="hero-title-img">` 주석만 풀면 됩니다.
+
+**레이아웃도 반응형으로 둘**입니다(가로/정방형 포스터를 세로 모바일에서 잘라 확대하지 않기 위함): 데스크톱은 `.hero-bg-img`를 `position:absolute`+`object-fit:cover`로 화면 전체에 깔고 그 위에 텍스트를 겹칩니다. 모바일은 `.hero-bg-img`를 `position:static`(일반 흐름 블록, `width:100%;height:auto`)으로 바꿔 정방형 포스터 **전체(기타 모양)**를 상단에 풀블리드로 얹고, 텍스트(`.hero-content`, 좌우 패딩은 여기에)를 그 아래로 흐르게 합니다 — 이때 `.hero-img-spacer`와 `.hero-overlay`는 `display:none`. `<picture>` 래퍼는 `#hero picture { display:contents }`로 레이아웃에서 빼서 안의 `img`만 배치되게 합니다. 좁은 폭에서 카운트다운 4칸·팀명 칩이 넘치지 않도록 `@media (max-width:480px)`에서 크기를 한 번 더 줄입니다. **주의: 이 환경의 헤드리스 크롬은 창 폭을 500px 미만으로 못 내리므로(레이아웃이 500으로 고정), 진짜 좁은 모바일 레이아웃은 375/360px 폭 `<iframe>`으로 감싸 렌더해서 확인해야 합니다.**
+
+이 "지금은 플레이스홀더, 나중에 디자이너 에셋" 패턴은 다른 곳에도 남아있습니다(`.ticket-postertext-bg.ph` 텍스트 워터마크, "QR 준비중" 박스) — 각각 무엇으로 교체해야 하는지 인라인 주석이 달려 있습니다.
 
 ## 색상 체계
 

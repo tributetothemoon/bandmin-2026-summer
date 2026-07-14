@@ -137,7 +137,7 @@ nav {
       justify-content: center;
       overflow: hidden;
       padding: 5rem 1.5rem 4.5rem;
-      /* 포스터 프레임(.hero-poster-frame) 바깥 여백에도 같은 톤이 이어지도록 hero_bg.png와 동일한 그라데이션 값을 사용 */
+      /* 배경 이미지(static/hero_poster.jpg) 로딩 전 잠깐 보이는 폴백 색상 */
       background: radial-gradient(120% 90% at 50% 0%, #2a2a2a 0%, #141414 45%, #000 100%);
     }
 
@@ -146,27 +146,19 @@ nav {
       color: var(--cream);
     }
 
-    /* 전체 배경 이미지 — 화면 전체 채움 */
+    /* <picture> 래퍼는 레이아웃에서 빼고 안의 img만 배치 */
+    #hero picture { display: contents; }
+
+    /* 데스크톱: 가로형 포스터를 화면 전체에 cover로 깔고 그 위에 텍스트를 겹침 */
     .hero-bg-img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center top;
+      object-position: 42% center;
       display: block;
       z-index: 0;
-    }
-
-    /* 전경 이미지 — 아이스크림/스틱 (메인 포스터에서 추출) */
-    .hero-hero-img {
-      position: absolute;
-      top: 16%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(65%, 400px);
-      z-index: 1;
-      pointer-events: none;
     }
 
     /* 제목 이미지 */
@@ -701,44 +693,59 @@ nav {
     /* ── Responsive ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      
-      #hero { padding: 6rem 1.2rem 5rem; }
 
-      .hero-tag { top: 74px; }
-
-          .hero-content {
-            max-width: 100%;
-            align-items: center;
-            text-align: center;
-          }
-
-      /* 배경은 전체 너비로 */
-      .hero-bg-img { width: 100%; }
-      .hero-overlay {
-        width: 100%;
-        left: 0;
-        transform: none;
+      /* 모바일: 데스크톱과 다른 정방형 포스터(hero_poster_square.jpg)를 사용.
+         전체(기타 모양)가 잘리지 않도록 이미지를 일반 흐름 블록으로 상단에 얹고,
+         텍스트는 그 아래로 흐르게 배치(스페이서 불필요 — 이미지 실제 높이만큼 자연히 밀림) */
+      /* 좌우 패딩은 텍스트(.hero-content)로 옮겨 이미지는 풀블리드 */
+      #hero {
+        justify-content: flex-start;
+        padding: 0 0 4rem;
       }
 
-      /* 이미지들 모바일 크기/위치 */
+      .hero-bg-img {
+        position: static;
+        inset: auto;
+        width: 100%;
+        height: auto;          /* 정방형 → 100vw 높이 */
+        object-fit: contain;
+      }
+
+      /* 이미지가 실제 요소가 되면서 하단 페이드 오버레이는 불필요 */
+      .hero-overlay { display: none; }
+
+      .hero-tag {
+        top: 68px;
+      }
+
+      .hero-content {
+        max-width: 100%;
+        padding: 0 1.2rem;
+        align-items: center;
+        text-align: center;
+      }
+
+      /* 이미지가 흐름에 있으므로 스페이서 제거 */
+      .hero-img-spacer {
+        display: none;
+      }
+
+      .hero-title { margin-top: 1.8rem; }
+
+      /* 제목 이미지(디자이너 PNG 적용 시) 모바일 크기 */
       .hero-title-img {
         top: 10%;
         width: min(85%, 360px);
       }
 
-      .hero-hero-img {
-        top: 18%;
-        width: min(60%, 280px);
-      }
-
-      .hero-img-spacer {
-        height: clamp(220px, 85vw, 380px);
-      }
+      .hero-date { margin-top: 1.6rem; }
 
       .hero-bands {
         justify-content: center;
+        gap: .35rem;
       }
-    
+      .hero-band-chip { font-size: .66rem; padding: .22rem .6rem; }
+
       .venue-grid { grid-template-columns: 1fr; }
       .bands-grid { grid-template-columns: 1fr 1fr; }
       .scroll-hint {
@@ -753,6 +760,14 @@ nav {
       .scroll-hint {
           display: none;
       }
+
+      /* 좁은 폭에서도 카운트다운 4칸이 한 줄에 들어오도록 축소 */
+      .countdown { gap: .45rem; margin-top: 1.8rem; }
+      .cd-num { font-size: 1.5rem; min-width: 2.3rem; padding: .3rem .45rem; }
+      .cd-label { font-size: .5rem; }
+
+      /* 긴 팀명 칩이 넘치지 않게 한 번 더 축소 */
+      .hero-band-chip { font-size: .62rem; padding: .2rem .55rem; }
     }
 
     /* ── Reveal ── */

@@ -1,1 +1,8 @@
 .DS_Store
+
+# 히어로 배경 원본(대용량). 웹에는 압축 JPEG만 커밋, 원본은 로컬 마스터로만 보관.
+#   poster_without_title.png(9.7MB) → static/hero_poster.jpg (데스크톱 가로형)
+#   poster_square.png(13MB)         → static/hero_poster_square.jpg (모바일 정방형)
+static/poster_without_title.png
+static/poster_square.png
+static/poster_melted_sqaure.png

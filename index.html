@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <!-- Pretendard via CDN (variable font) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
-  <link rel="stylesheet" href="static/style.css?v=8">
+  <link rel="stylesheet" href="static/style.css?v=11">
 
     <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8G5DR8R8KF"></script>
@@ -26,13 +26,13 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="밴드의민족 2026 여름 정기공연" />
   <meta property="og:description" content="2026년 7월 25일 18:00 펄스라이브홀 밴드의민족 여름 정기공연" />
-  <meta property="og:image" content="https://tributetothemoon.github.io/bandmin-2026-summer/static/poster.png" />
+  <meta property="og:image" content="https://tributetothemoon.github.io/bandmin-2026-summer/static/poster_with_title.png" />
   <meta property="og:url" content="https://tributetothemoon.github.io/bandmin-2026-summer/" />
   <meta property="og:locale" content="ko_KR" />
 
   <!-- Twitter Card (X에서 공유 시) -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://tributetothemoon.github.io/bandmin-2026-summer/static/poster.png" />
+  <meta name="twitter:image" content="https://tributetothemoon.github.io/bandmin-2026-summer/static/poster_with_title.png" />
    
 </head>
 <body>
@@ -73,15 +73,18 @@
 
   <!-- Hero -->
  <section id="hero">
-  <!-- [디자이너용] 히어로 3레이어 포스터: 배경/전경은 메인 포스터에서 추출/생성한 샘플 이미지 사용 중.
-       ① 배경 static/hero_bg.png ③ 전경 static/hero_foreground.png
-       ② 제목은 지금 임시로 텍스트(.hero-title)를 쓰고 있음 — 디자이너 제목 PNG(static/hero_title.png)가 나오면
-          아래 span을 지우고 바로 아래 주석 처리된 img의 주석만 풀어서 자리에 넣으면 됨 (CSS class .hero-title-img 그대로 사용) -->
-  <img src="static/hero_bg.png" alt="" class="hero-bg-img" />
+  <!-- 배경 포스터(제목 없음): 뷰포트에 따라 한 장만 로드 —
+       데스크톱(≥769px)=가로형 hero_poster.jpg, 모바일(≤768px)=정방형 hero_poster_square.jpg.
+       원본(poster_without_title.png / poster_square.png)은 대용량이라 커밋 안 함(.gitignore), 웹용 JPEG만 커밋.
+       제목은 지금 임시로 텍스트(.hero-title)를 쓰고 있음 — 디자이너 제목 PNG(static/hero_title.png)가 나오면
+       아래 span을 지우고 바로 아래 주석 처리된 img의 주석만 풀어서 자리에 넣으면 됨 (CSS class .hero-title-img 그대로 사용) -->
+  <picture>
+    <source media="(max-width: 768px)" srcset="static/hero_poster_square.jpg" />
+    <img src="static/hero_poster.jpg" alt="" class="hero-bg-img" />
+  </picture>
   <div class="hero-tag">Live Concert · Free Entry</div>
 
   <!-- <img src="static/hero_title.png" alt="밴드의민족" class="hero-title-img" /> -->
-  <img src="static/hero_foreground.png" alt="" class="hero-hero-img" />
   <div class="hero-overlay"></div>
 
   <div class="hero-content">
