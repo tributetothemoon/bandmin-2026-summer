@@ -8,7 +8,7 @@
 
 ## 이 프로젝트는 무엇인가
 
-**밴드의민족 2026년 여름 정기공연**(밴드 쇼케이스 공연)을 위한 싱글 페이지 정적 사이트로, GitHub Pages(`https://tributetothemoon.github.io/bandmin-2026-summer/`)를 통해 호스팅됩니다. 별도의 빌드 시스템, 패키지 매니저, 테스트 스위트가 없습니다 — 순수 HTML/CSS와 약간의 인라인 JS로만 구성되어 있습니다.
+**밴드의민족 2026년 여름 정기공연**(밴드 쇼케이스 공연)을 위한 싱글 페이지 정적 사이트로, GitHub Pages(`https://tributetothemoon.github.io/bandmin-2026-summer/`)를 통해 호스팅됩니다. 별도의 빌드 시스템, 패키지 매니저, 테스트 스위트가 없습니다 — 순수 HTML/CSS/JS로만 구성되어 있습니다.
 
 ## 로컬에서 작업하기
 
@@ -23,8 +23,9 @@ python3 -m http.server 8777
 
 ## 구조
 
-- `index.html` — 페이지 전체: 마크업, 모든 카피, 모든 JS(`<body>` 하단의 인라인 `<script>`). 별도의 `.js` 파일은 없습니다.
+- `index.html` — 페이지 전체: 마크업과 모든 카피. 인라인 `style=""`/`<script>`는 쓰지 않습니다 — 스타일은 `static/style.css`, 동작은 `static/script.js`로 전부 분리되어 있습니다. 예외적으로 Google Analytics(gtag) 부트스트랩 스니펫만 `<head>`에 그대로 인라인으로 남아있습니다(서드파티 표준 삽입 방식).
 - `static/style.css` — 모든 스타일. `index.html`에서 캐시 무효화용 쿼리 스트링(`static/style.css?v=N`)과 함께 참조됩니다 — CSS를 수정해 푸시할 때는 GitHub Pages가 오래된 캐시를 서빙하지 않도록 `N`을 올려주세요.
+- `static/script.js` — 모든 JS(카운트다운, 스크롤 리빌, 타임테이블/FAQ 아코디언, 밴드 링크 주입, 햄버거 메뉴, 계좌번호 복사, 응원하기 플로팅 버튼). `index.html`에서 `static/script.js?v=N`으로 참조되며, CSS와 마찬가지로 수정 시 `N`을 올려주세요. `toggleFaq`처럼 HTML의 `onclick=""`에서 직접 호출하는 함수는 전역 `function` 선언으로 유지해야 합니다.
 - `static/` — 모든 이미지(포스터, 밴드 사진, 소셜 아이콘). 새 이미지 에셋은 여기에 넣고 `static/<file>`로 참조합니다.
 
 ## 페이지 구조 (`index.html`)
@@ -35,7 +36,7 @@ python3 -m http.server 8777
 - 밴드별 `.band-card`: `.band-img`(사진 `<img>` 또는 플레이스홀더 그라데이션을 위한 빈 값), `.band-name`, 선택적 `.band-desc`(멤버 명단, 예: `이름(V) · 이름(G)`), 카드 자체에 있는 `data-instagram` / `data-youtube` 속성.
 - 밴드별 `.tt-group`: `.tt-time` / `.tt-act`가 있는 토글 버튼과, `.setlist-songs`(`.song-no`, `.song-title`, `.song-artist`)로 구성된 `.setlist` 패널. 참고용 유튜브 영상이 있으면 곡 제목은 `<a>` 태그로 링크되고, 없으면 일반 `<span>`입니다.
 
-밴드 소셜 링크는 마크업에 하드코딩되어 있지 **않습니다** — `index.html` 하단의 인라인 JS가 각 `.band-card`의 `data-instagram`/`data-youtube`를 읽어 `.band-links`에 아이콘 링크를 주입합니다(둘 다 비어 있으면 컨테이너 자체를 제거). 아이콘 `<a>`를 직접 작성하지 말고 이 두 속성만 설정하세요.
+밴드 소셜 링크는 마크업에 하드코딩되어 있지 **않습니다** — `static/script.js`가 각 `.band-card`의 `data-instagram`/`data-youtube`를 읽어 `.band-links`에 아이콘 링크를 주입합니다(둘 다 비어 있으면 컨테이너 자체를 제거). 아이콘 `<a>`를 직접 작성하지 말고 이 두 속성만 설정하세요.
 
 아직 확정되지 않은 밴드/셋리스트 슬롯은 생략하지 않고 `TBA`, `TBD`, `셋리스트 준비중` 같은 리터럴 플레이스홀더 텍스트를 사용해서, 그리드/타임테이블의 항목 수가 일정하게 유지되도록 합니다.
 

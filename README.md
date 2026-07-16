@@ -14,8 +14,9 @@ python3 -m http.server 8000
 
 ## 구성
 
-- `index.html` — 페이지 전체(마크업 + 인라인 스크립트)
+- `index.html` — 페이지 전체(마크업)
 - `static/style.css` — 전체 스타일
+- `static/script.js` — 전체 스크립트(카운트다운, 아코디언, 밴드 링크 주입 등)
 - `static/` — 포스터, 밴드 사진, 아이콘 등 모든 이미지 에셋
 
 별도의 빌드 도구나 패키지 매니저는 사용하지 않습니다.
@@ -24,7 +25,7 @@ python3 -m http.server 8000
 
 - **참가 밴드 / 타임테이블**: `index.html`의 `#bands`, `#timetable` 섹션에서 밴드 카드와 타임테이블 항목이 1:1로 대응합니다. 팀이 확정되면 두 곳 모두 같은 순서로 채워주세요.
 - **히어로 이미지**: 배경은 제목 없는 가로형 포스터를 웹용으로 압축한 `static/hero_poster.jpg`를 사용합니다(데스크톱은 화면 전체 배경, 모바일은 포스터 전체가 상단에 보이도록 배치). 제목만 디자이너 최종본이 나오기 전까지 임시 텍스트로 되어 있고, 최종 타이틀 이미지가 나오면 `<section id="hero">` 안의 안내 주석을 따라 교체하면 됩니다.
-- **CSS 변경 시**: `index.html`의 `static/style.css?v=N` 쿼리 스트링의 버전을 올려주세요. GitHub Pages 캐시 때문에 안 올리면 배포 후에도 이전 스타일이 보일 수 있습니다.
+- **CSS/JS 변경 시**: `index.html`의 `static/style.css?v=N`, `static/script.js?v=N` 쿼리 스트링의 버전을 올려주세요. GitHub Pages 캐시 때문에 안 올리면 배포 후에도 이전 코드가 보일 수 있습니다.
 
 ## 배포
 

@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <!-- Pretendard via CDN (variable font) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
-  <link rel="stylesheet" href="static/style.css?v=11">
+  <link rel="stylesheet" href="static/style.css?v=12">
 
     <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8G5DR8R8KF"></script>
@@ -379,34 +379,21 @@
         </div>
         <div class="reveal">
           <!-- Google Maps embed -->
-          <div style="border-radius:10px; overflow:hidden; border:1px solid rgba(255,241,238,.1);">
+          <div class="venue-map-embed">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.1447055667168!2d127.01816307659603!3d37.50450507205482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca1dd4773cdc9%3A0x202b1a99a203227!2z7Y6E7Iqk65287J2067iM7ZmA!5e0!3m2!1sde!2skr!4v1780628872553!5m2!1sde!2skr"
               width="100%" height="320"
-              style="border:0; display:block;"
               allowfullscreen loading="lazy"
               referrerpolicy="no-referrer-when-downgrade">
             </iframe>
           </div>
           <!-- 네이버/카카오 버튼 -->
-          <div style="display:flex; gap:.7rem; margin-top:.9rem;">
-            <a href="https://naver.me/G4WoE9X7" target="_blank" rel="noopener"
-               style="flex:1; display:flex; align-items:center; justify-content:center; gap:.45rem;
-                      font-size:.75rem; font-weight:700; letter-spacing:.06em;
-                      padding:.7rem 1rem; border-radius:5px; text-align:center;
-                      background:#03C75A; color:#fff;
-                      transition:opacity .15s;"
-               onmouseover="this.style.opacity='.82'" onmouseout="this.style.opacity='1'">
+          <div class="venue-map-links">
+            <a href="https://naver.me/G4WoE9X7" target="_blank" rel="noopener" class="map-btn map-btn-naver">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727z"/></svg>
               네이버맵
             </a>
-            <a href="https://place.map.kakao.com/172167395" target="_blank" rel="noopener"
-               style="flex:1; display:flex; align-items:center; justify-content:center; gap:.45rem;
-                      font-size:.75rem; font-weight:700; letter-spacing:.06em;
-                      padding:.7rem 1rem; border-radius:5px; text-align:center;
-                      background:#FEE500; color:#3A1D1D;
-                      transition:opacity .15s;"
-               onmouseover="this.style.opacity='.82'" onmouseout="this.style.opacity='1'">
+            <a href="https://place.map.kakao.com/172167395" target="_blank" rel="noopener" class="map-btn map-btn-kakao">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.477 3 2 6.477 2 10.8c0 2.7 1.636 5.085 4.125 6.548L5.06 21l4.688-2.438A11.3 11.3 0 0 0 12 18.6c5.523 0 10-3.477 10-7.8S17.523 3 12 3z"/></svg>
               카카오맵
             </a>
@@ -461,79 +448,38 @@
     <!-- [디자이너용] 제목 이미지 준비 시 아래 텍스트 워터마크를 <img src="static/hero_title.png" alt="" class="ticket-postertext-bg" /> 로 교체 -->
     <div class="ticket-postertext-bg ph">밴드의민족</div>
 
-    <div class="section-inner ticket-inner" style="text-align:center; padding: 8rem 2rem;">
-      <p class="section-label" style="color:rgba(255,241,238,.5); display:flex; justify-content:center; margin-bottom:1.2rem;">Entry</p>
+    <div class="section-inner ticket-inner">
+      <p class="section-label ticket-entry-label">Entry</p>
       <h2 class="ticket-title">무료 입장</h2>
-      <p class="ticket-sub" style="font-size:1.1rem; margin-bottom:.5rem;">무료 입장 자율 퇴장</p>
+      <p class="ticket-sub ticket-sub-lead">무료 입장 자율 퇴장</p>
       <p class="ticket-sub">26.07.25 (SAT) &nbsp;·&nbsp; 펄스라이브홀 &nbsp;·&nbsp; 17:45 OPEN</p>
-      <div style="margin-top:2.2rem; display:inline-block; padding: .9rem 2.2rem;
-                  border: 1px solid rgba(255,241,238,.35); border-radius:4px;">
-        <span style="font-size:.8rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--cream);">
-          FREE · Tips Welcome
-        </span>
+      <div class="ticket-badge">
+        <span class="ticket-badge-text">FREE · Tips Welcome</span>
       </div>
     </div>
   </section>
 
   <!-- Support / Donation -->
   <section id="support">
-    <div class="section-inner" style="text-align:center;">
-      <p class="section-label reveal" style="justify-content:center; display:flex;">Support</p>
+    <div class="section-inner support-inner">
+      <p class="section-label reveal support-label">Support</p>
       <h2 class="section-title reveal">밴드를 응원해요</h2>
-      <div class="divider reveal" style="margin:0 auto 2rem;"></div>
-      <p class="reveal" style="color:rgba(255,241,238,.6); font-size:.92rem; line-height:1.9; margin-bottom:2.2rem;">
+      <div class="divider reveal support-divider"></div>
+      <p class="reveal support-body">
         밴드에게 작은 응원을 보내고 싶다면,<br>
         아래 QR과 계좌번호를 통해 후원할 수 있어요❤️‍🔥
       </p>
-      <div class="reveal" style="display:inline-flex; flex-direction:column; align-items:center; gap:1rem;">
-        <img src="static/qr_account.jpeg" alt="후원 QR 코드" style="width:176px;height:176px;display:block;image-rendering:pixelated;" />
+      <div class="reveal support-qr-block">
+        <img src="static/qr_account.jpeg" alt="후원 QR 코드" class="support-qr-img" />
         <button id="copy-account-btn" class="donation-btn">
           계좌번호 복사하기
         </button>
-        
-        <p id="copy-message"
-           style="font-size:.65rem; color:var(--pink); opacity:0; transition:opacity .2s;">
+
+        <p id="copy-message" class="copy-message">
           복사되었습니다
         </p>
-        
-        <script>
-        document.getElementById('copy-account-btn').addEventListener('click', async () => {
-          const text = '카카오뱅크 3333-34-6118377 김기문';
 
-          try {
-            await navigator.clipboard.writeText(text);
-        
-            const message = document.getElementById('copy-message');
-            message.style.opacity = '1';
-        
-            setTimeout(() => {
-              message.style.opacity = '0';
-            }, 2000);
-        
-          } catch (err) {
-            alert(text);
-          }
-        });
-
-          // 햄버거 메뉴
-        const hamburger = document.getElementById('nav-hamburger');
-        const drawer = document.getElementById('nav-drawer');
-        
-        hamburger?.addEventListener('click', () => {
-          hamburger.classList.toggle('open');
-          drawer.classList.toggle('open');
-        });
-        
-        // 드로어 링크 클릭시 닫기
-        drawer?.querySelectorAll('.drawer-link').forEach(link => {
-          link.addEventListener('click', () => {
-            hamburger.classList.remove('open');
-            drawer.classList.remove('open');
-          });
-        });
-        </script>
-        <p style="font-size:.6rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
-                  color:rgba(255,241,238,.22);">QR 코드를 카메라로 스캔하세요</p>
+        <p class="support-qr-caption">QR 코드를 카메라로 스캔하세요</p>
       </div>
     </div>
   </section>
@@ -548,77 +494,6 @@
     </a>
   </footer>
 
-  <script>
-    document.getElementById('nav-logo')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-    // ── Band links 조건부 렌더링 ──
-    document.querySelectorAll('.band-card').forEach(card => {
-      const ig = card.dataset.instagram;
-      const yt = card.dataset.youtube;
-      const container = card.querySelector('.band-links');
-      if (ig) container.insertAdjacentHTML('beforeend',
-        `<a href="${ig}" target="_blank" rel="noopener" class="band-link" aria-label="Instagram"><img src="static/instagram.png" alt="Instagram"></a>`);
-      if (yt) container.insertAdjacentHTML('beforeend',
-        `<a href="${yt}" target="_blank" rel="noopener" class="band-link" aria-label="YouTube"><img src="static/youtube.png" alt="YouTube"></a>`);
-      if (!ig && !yt) container.remove();
-    });
-
-    // ── Countdown ── 26.07.25 18:00 KST
-    const concertDate = new Date('2026-07-25T18:00:00+09:00');
-    function updateCountdown() {
-      const diff = concertDate - new Date();
-      if (diff <= 0) {
-        document.getElementById('countdown').innerHTML =
-          '<span style="font-family:var(--font-mono);color:var(--pink);font-size:1.1rem;letter-spacing:.08em">🎸 공연 중!</span>';
-        return;
-      }
-      const d = Math.floor(diff / 86400000);
-      const h = Math.floor((diff % 86400000) / 3600000);
-      const m = Math.floor((diff % 3600000) / 60000);
-      const s = Math.floor((diff % 60000) / 1000);
-      document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
-      document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
-      document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
-      document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-
-    // ── Scroll Reveal ──
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // ── Set list (타임테이블 아코디언) ──
-    document.querySelectorAll('.tt-toggle').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const group = btn.closest('.tt-group');
-        const open = group.classList.toggle('open');
-        btn.setAttribute('aria-expanded', open);
-      });
-    });
-
-    // ── FAQ ──
-    function toggleFaq(btn) {
-      const item = btn.closest('.faq-item');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    }
-    // 응원하기 버튼: hero에선 숨기고, 아래로 내려가면 표시
-    (function () {
-      const fab = document.querySelector('.floating-support');
-      const hero = document.getElementById('hero');
-      if (fab && hero) {
-        const heroObserver = new IntersectionObserver(([entry]) => {
-          fab.classList.toggle('show', entry.intersectionRatio < 0.5);
-        }, { threshold: [0, 0.5, 1] });
-        heroObserver.observe(hero);
-      }
-    })();
-  </script>
+  <script src="static/script.js?v=1"></script>
 </body>
 </html>

@@ -302,6 +302,11 @@ nav {
       font-size: .55rem; letter-spacing: .14em; text-transform: uppercase;
       color: rgba(255,241,238,.35); margin-top: .35rem;
     }
+    /* 카운트다운 종료(공연 중) 메시지 */
+    .countdown-live {
+      font-family: var(--font-mono); color: var(--pink);
+      font-size: 1.1rem; letter-spacing: .08em;
+    }
 
     /* buttons */
     .hero-btns {
@@ -579,6 +584,25 @@ nav {
     .map-icon { font-size: 2.2rem; }
     .map-label { font-size: .65rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; }
 
+    /* Google Maps embed */
+    .venue-map-embed {
+      border-radius: 10px; overflow: hidden;
+      border: 1px solid rgba(255,241,238,.1);
+    }
+    .venue-map-embed iframe { border: 0; display: block; }
+
+    /* 네이버/카카오 지도 버튼 */
+    .venue-map-links { display: flex; gap: .7rem; margin-top: .9rem; }
+    .map-btn {
+      flex: 1; display: flex; align-items: center; justify-content: center; gap: .45rem;
+      font-size: .75rem; font-weight: 700; letter-spacing: .06em;
+      padding: .7rem 1rem; border-radius: 5px; text-align: center;
+      transition: opacity .15s;
+    }
+    .map-btn:hover { opacity: .82; }
+    .map-btn-naver { background: #03C75A; color: #fff; }
+    .map-btn-kakao { background: #FEE500; color: #3A1D1D; }
+
 
     /* ── FAQ ── */
     #faq { background: #14120f; }
@@ -612,7 +636,21 @@ nav {
       background: linear-gradient(135deg, #0e0d0c 0%, #2b171e 40%, #7a3552 70%, var(--pink) 100%);
       text-align: center; position: relative; overflow: hidden;
     }
-    .ticket-inner { position: relative; z-index: 2; }
+    .ticket-inner { position: relative; z-index: 2; text-align: center; padding: 8rem 2rem; }
+    .ticket-entry-label {
+      color: rgba(255,241,238,.5);
+      display: flex; justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+    .ticket-sub-lead { font-size: 1.1rem; }
+    .ticket-badge {
+      margin-top: 2.2rem; display: inline-block; padding: .9rem 2.2rem;
+      border: 1px solid rgba(255,241,238,.35); border-radius: 4px;
+    }
+    .ticket-badge-text {
+      font-size: .8rem; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--cream);
+    }
 
     /* postertext.png 배경 워터마크 (이미지 받으면 img 주석 해제 / 텍스트 div 삭제) */
     .ticket-postertext-bg {
@@ -667,6 +705,30 @@ nav {
 
     /* ── Support ── */
     #support { background: linear-gradient(to bottom, var(--navy), #14120f); }
+    .support-inner { text-align: center; }
+    .support-label { justify-content: center; display: flex; }
+    .support-divider { margin: 0 auto 2rem; }
+    .support-body {
+      color: rgba(255,241,238,.6); font-size: .92rem;
+      line-height: 1.9; margin-bottom: 2.2rem;
+    }
+    .support-qr-block {
+      display: inline-flex; flex-direction: column;
+      align-items: center; gap: 1rem;
+    }
+    .support-qr-img {
+      width: 176px; height: 176px; display: block;
+      image-rendering: pixelated;
+    }
+    .copy-message {
+      font-size: .65rem; color: var(--pink);
+      opacity: 0; transition: opacity .2s;
+    }
+    .support-qr-caption {
+      font-size: .6rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(255,241,238,.22);
+    }
 
     /* ── Playlist ── */
     #playlist { background: #14120f; }
